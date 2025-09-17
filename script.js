@@ -322,10 +322,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Hover effect: give user a clue that it's clickable
         entry.addEventListener("mouseenter", () => {
-            entry.classList.add("scale-105", "shadow-lg");
+            entry.classList.add("scale-110");
         });
         entry.addEventListener("mouseleave", () => {
-            entry.classList.remove("scale-105", "shadow-lg");
+            entry.classList.remove("scale-110");
         });
 
         // Click toggle popup

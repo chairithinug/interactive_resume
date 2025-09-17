@@ -47,11 +47,11 @@
 }
 
 .timeline-entry {
-    transition: transform 0.2s ease;
+    transition: transform 1s ease;
 }
 
 .timeline-popup {
-    transition: opacity 0.3s ease;
+    transition: opacity 1s ease;
 }
 
 .opacity-0 {
@@ -185,3 +185,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.countdown {
+    font-variant-numeric: tabular-nums; /* makes numbers align evenly */
+  }
