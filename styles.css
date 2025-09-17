@@ -3,15 +3,6 @@ header {
     max-width: 100%;
 }
 
-@media (max-width: 768px) {
-
-    /* Adjustments for tablets and mobile devices */
-    .some-element {
-        padding: 10px;
-        font-size: 14px;
-    }
-}
-
 #main-header {
     position: sticky;
     top: 0;
