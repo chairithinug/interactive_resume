@@ -317,6 +317,29 @@ document.addEventListener("DOMContentLoaded", () => {
             loadLanguage(btn.dataset.lang);
         });
     });
+    document.querySelectorAll(".timeline-entry").forEach(entry => {
+        const popup = entry.querySelector(".timeline-popup");
+
+        // Hover effect: give user a clue that it's clickable
+        entry.addEventListener("mouseenter", () => {
+            entry.classList.add("scale-105", "shadow-lg");
+        });
+        entry.addEventListener("mouseleave", () => {
+            entry.classList.remove("scale-105", "shadow-lg");
+        });
+
+        // Click toggle popup
+        entry.addEventListener("click", () => {
+            const isVisible = popup.classList.contains("opacity-100");
+            if (isVisible) {
+                popup.classList.remove("opacity-100");
+                popup.classList.add("opacity-0", "pointer-events-none");
+            } else {
+                popup.classList.remove("opacity-0", "pointer-events-none");
+                popup.classList.add("opacity-100");
+            }
+        });
+    });
 });
 setInterval(updateCountdowns, 1000);
 updateCountdowns(); // run immediately on load

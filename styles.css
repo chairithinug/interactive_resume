@@ -2,7 +2,7 @@
     position: absolute;
     border-radius: 50%;
     opacity: 0.8;
-  }
+}
 
 .blobs-container {
     position: fixed;
@@ -39,6 +39,22 @@
 .blob.fade-out {
     opacity: 0 !important;
     transform: translate(-50%, -50%) scale(0.5) !important;
+}
+
+.timeline-entry {
+    transition: transform 0.2s ease;
+}
+
+.timeline-popup {
+    transition: opacity 0.3s ease;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
 }
 
 .flip-card {
