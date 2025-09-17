@@ -1,71 +1,106 @@
-document.addEventListener("DOMContentLoaded", () => {
-    progressBar();
-    timelinePresent();
-    certCarousel();
-    sportsCarousel();
-    darkMode();
-    getWeather();
-    blobBackground();
-
-    // Example: change language on click
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            loadLanguage(btn.dataset.lang);
-        });
-    });
-});
-
 function blobBackground() {
     const colors = [
-        "#FBB6CE", "#BFDBFE", "#C6F6D5", "#FEF08A", "#D8B4FE",
-        "#FF6B6B", "#4ECDC4", "#556270", "#C7F464", "#FF6F91",
-        "#845EC2", "#FFC75F", "#008F7A", "#FF9671", "#2C73D2",
-        "#F9F871", "#D65DB1", "#00C9A7", "#FFA500", "#A4DE02"
+        "#FBB6CE","#BFDBFE","#C6F6D5","#FEF08A","#D8B4FE",
+        "#F87171","#34D399","#60A5FA","#FCD34D","#A78BFA",
+        "#F472B6","#22D3EE","#4ADE80","#FACC15","#C084FC",
+        "#F59E0B","#EC4899","#3B82F6","#10B981","#EAB308"
     ];
-    const container = document.querySelector(".blobs-container");
-    if (!container) return;
+    const container = document.createElement("div");
+    container.className = "blobs-container fixed inset-0 -z-10 pointer-events-none";
+    document.body.appendChild(container);
 
-    const maxBlobs = 20;
+    const blobs = [];
+    const maxBlobs = 10;
+    const minSize = 60;
+    const maxSize = 150;
+
+    function random(min, max) { return Math.random() * (max - min) + min; }
 
     function createBlob() {
         const blob = document.createElement("div");
-        blob.className = "blob";
-
-        // Random color
-        blob.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-        // Random position
-        const size = 60 + Math.random() * 120;
+        blob.className = "blob absolute rounded-full opacity-0";
+        const size = random(minSize, maxSize);
         blob.style.width = `${size}px`;
         blob.style.height = `${size}px`;
+        blob.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
-        blob.style.top = `${Math.random() * (100 - (size / window.innerHeight) * 100)}%`;
-        blob.style.left = `${Math.random() * (100 - (size / window.innerWidth) * 100)}%`;
+        // Random initial position
+        blob.x = random(0, window.innerWidth - size);
+        blob.y = random(0, window.innerHeight - size);
 
-        // Random animation duration and delay
-        const duration = 15 + Math.random() * 15;
-        blob.style.animationDuration = `${duration}s`;
-        blob.style.animationDelay = `${Math.random() * 5}s`;
+        // Random velocity
+        blob.vx = random(-1.5, 1.5);
+        blob.vy = random(-1.5, 1.5);
+
+        // Lifespan
+        blob.lifespan = random(8, 20);
+        blob.age = 0;
 
         container.appendChild(blob);
+        blobs.push(blob);
 
-        // Fade in after appending
-        setTimeout(() => blob.classList.add("fade-in"), 50);
-
-        // Fade out and remove after lifespan
-        setTimeout(() => {
-            blob.classList.add("fade-out");
-            blob.addEventListener("transitionend", () => blob.remove());
-        }, (duration + Math.random() * 10) * 1000);
+        // Fade in
+        requestAnimationFrame(() => {
+            blob.style.transition = "opacity 1.5s";
+            blob.style.opacity = "0.15";
+        });
     }
 
-    // Create new blobs every 2 seconds
+    function animate() {
+        blobs.forEach((b, i) => {
+            b.x += b.vx;
+            b.y += b.vy;
+
+            // Bounce off walls
+            if (b.x < 0 || b.x + b.offsetWidth > window.innerWidth) b.vx *= -1;
+            if (b.y < 0 || b.y + b.offsetHeight > window.innerHeight) b.vy *= -1;
+
+            // Bounce off other blobs
+            for (let j = i + 1; j < blobs.length; j++) {
+                const o = blobs[j];
+                const dx = (b.x + b.offsetWidth/2) - (o.x + o.offsetWidth/2);
+                const dy = (b.y + b.offsetHeight/2) - (o.y + o.offsetHeight/2);
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                const minDist = (b.offsetWidth + o.offsetWidth)/2;
+                if (dist < minDist && dist > 0) {
+                    const angle = Math.atan2(dy, dx);
+                    const overlap = minDist - dist;
+                    b.x += Math.cos(angle) * (overlap/2);
+                    b.y += Math.sin(angle) * (overlap/2);
+                    o.x -= Math.cos(angle) * (overlap/2);
+                    o.y -= Math.sin(angle) * (overlap/2);
+                    // swap velocities slightly
+                    const tempVx = b.vx; const tempVy = b.vy;
+                    b.vx = o.vx; b.vy = o.vy;
+                    o.vx = tempVx; o.vy = tempVy;
+                }
+            }
+
+            b.style.transform = `translate(${b.x}px, ${b.y}px)`;
+
+            // Age & fade out
+            b.age += 0.016; // approx 60fps
+            if (b.age > b.lifespan) {
+                b.style.transition = "opacity 2s";
+                b.style.opacity = 0;
+                setTimeout(() => {
+                    container.removeChild(b);
+                    blobs.splice(blobs.indexOf(b), 1);
+                }, 2000);
+            }
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    // Generate new blobs over time
     setInterval(() => {
-        if (container.children.length < maxBlobs) createBlob();
+        if (blobs.length < maxBlobs) createBlob();
     }, 2000);
+
+    animate();
 }
 
-// Run after DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
     blobBackground();
 });
@@ -241,9 +276,6 @@ function darkMode() {
     });
 }
 
-setInterval(updateCountdowns, 1000);
-updateCountdowns(); // run immediately on load
-
 function toggleFlip(card) {
     card.classList.toggle("flipped");
 }
@@ -274,3 +306,21 @@ function loadLanguage(lang) {
         });
     console.log(`Language changed to: ${lang}`);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    progressBar();
+    timelinePresent();
+    certCarousel();
+    sportsCarousel();
+    darkMode();
+    getWeather();
+    blobPhysics();
+    // Example: change language on click
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            loadLanguage(btn.dataset.lang);
+        });
+    });
+});
+setInterval(updateCountdowns, 1000);
+updateCountdowns(); // run immediately on load

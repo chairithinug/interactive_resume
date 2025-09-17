@@ -1,13 +1,8 @@
 .blob {
     position: absolute;
     border-radius: 50%;
-    opacity: 0;
-    /* start invisible for fade-in */
-    transform: translate(-50%, -50%) scale(0.8);
-    animation: float 20s ease-in-out infinite alternate;
-    pointer-events: none;
-    transition: opacity 3s ease, transform 3s ease;
-}
+    opacity: 0.8;
+  }
 
 .blobs-container {
     position: fixed;
