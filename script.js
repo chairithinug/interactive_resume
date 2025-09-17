@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     sportsCarousel();
     darkMode();
     weather();
+
+    // Example: change language on click
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            loadLanguage(btn.dataset.lang);
+        });
+    });
 });
 
 function updateCountdowns() {
@@ -163,30 +170,20 @@ function weather() {
 }
 
 function darkMode() {
-    // dark mode
-    const toggle = document.getElementById("dark-toggle");
-    const thumb = document.getElementById("dark-toggle-thumb");
+    const darkToggle = document.getElementById("dark-toggle");
+    const darkThumb = document.getElementById("dark-toggle-thumb");
 
-    toggle.addEventListener("click", () => {
-        // Toggle dark mode class on <html>
-        document.documentElement.classList.toggle("dark");
-
-        // Animate thumb
-        if (document.documentElement.classList.contains("dark")) {
-            thumb.classList.add("translate-x-6");
-        } else {
-            thumb.classList.remove("translate-x-6");
-        }
-
-        // Optional: Save preference to localStorage
-        localStorage.setItem("theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
-    });
-
-    // On page load: restore theme
-    if (localStorage.getItem("theme") === "dark") {
+    // Load saved preference
+    if (localStorage.getItem("dark-mode") === "true") {
         document.documentElement.classList.add("dark");
-        thumb.classList.add("translate-x-6");
+        darkThumb.classList.add("translate-x-6");
     }
+
+    darkToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        darkThumb.classList.toggle("translate-x-6");
+        localStorage.setItem("dark-mode", document.documentElement.classList.contains("dark"));
+    });
 }
 
 setInterval(updateCountdowns, 1000);
@@ -202,4 +199,23 @@ function timelinePresent() {
     const today = new Date();
     const options = { year: "numeric", month: "long" }; // e.g., September 2025
     dateMarker.textContent = today.toLocaleDateString(undefined, options);
+}
+
+function loadLanguage(lang) {
+    fetch(`lang/${lang}.json`)
+        .then(res => res.json())
+        .then(data => {
+            const elements = [
+                "name-title", "profile-title", "profile-summary", "skills-title",
+                "timeline-title", "work-title", "education-title", "further-title",
+                "volunteer-title", "languages-title", "interests-title", "sports-title", "weather-title"
+            ];
+
+            elements.forEach(id => {
+                if (data[id]) { // only set if translation exists
+                    document.getElementById(id).textContent = data[id];
+                }
+            });
+        });
+    console.log(`Language changed to: ${lang}`);
 }

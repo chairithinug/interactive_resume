@@ -49,15 +49,27 @@
             </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Enable dark mode via class
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
 </head>
 
-<body class="bg-gray-50 text-gray-900"
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors duration-300"
     style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
     <!-- Header -->
-    <header class="bg-white shadow sticky top-0 z-50">
+    <header class="bg-white dark:bg-gray-900 shadow sticky top-0 z-50 transition-colors duration-300" style="background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0,0,0,0.02) 0px,
+        rgba(0,0,0,0.02) 1px,
+        transparent 1px,
+        transparent 4px
+      );">
         <div class="max-w-4xl mx-auto px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div>
-                <h1 class="text-2xl font-bold">Anapat Chairithinugull (Mew)</h1>
+                <h1 id="name-title" class="text-2xl font-bold">Anapat Chairithinugull (Mew)</h1>
                 <p class="text-sm text-gray-600">MSc Computer Science & BS Computer Engineering</p>
                 <p class="text-sm text-gray-600">Data Scientist & Software Developer</p>
             </div>
@@ -71,24 +83,48 @@
                 <p>🔗 <a href="https://www.strava.com/athletes/137178417" target="_blank"
                         class="text-orange-600 hover:underline">Strava</a></p>
             </div>
-            <div class="flex items-center space-x-4">
-                <!-- Dark Mode Toggle -->
-                <button id="dark-toggle"
-                    class="relative w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full transition-colors duration-300">
-                    <span
-                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transform transition-transform duration-300"
-                        id="dark-toggle-thumb"></span>
-                </button>
+            <div class="flex flex-col items-center space-y-2">
+                <!-- Language Selector (top) -->
+                <div class="flex items-center space-x-2 text-sm">
+                    <!-- EN -->
+                    <button class="lang-btn flex items-center px-2 py-1 hover:bg-gray-100 rounded" data-lang="en">
+                        <span class="mr-1 text-lg">🇺🇸</span> EN
+                    </button>
+
+                    <span class="text-gray-400">|</span>
+
+                    <!-- TH -->
+                    <button class="lang-btn flex items-center px-2 py-1 hover:bg-gray-100 rounded" data-lang="th">
+                        <span class="mr-1 text-lg">🇹🇭</span> TH
+                    </button>
+
+                    <span class="text-gray-400">|</span>
+
+                    <!-- DA -->
+                    <button class="lang-btn flex items-center px-2 py-1 hover:bg-gray-100 rounded" data-lang="da">
+                        <span class="mr-1 text-lg">🇩🇰</span> DA
+                    </button>
+                </div>
+
+                <!-- Dark Mode Toggle (below) -->
+                <div class="flex items-center space-x-2">
+                    <button id="dark-toggle"
+                        class="relative w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                        <span id="dark-toggle-thumb"
+                            class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transform transition-transform duration-300"></span>
+                    </button>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Dark Mode</span>
+                </div>
             </div>
         </div>
-        <div class="mb-12">
-            <!-- Progress Bar Container -->
-            <div class="relative h-8 bg-gray-200">
+        <!-- Progress Bar Container -->
+        <div class="relative bg-gray-200">
 
-                <!-- Scroll Progress -->
-                <div id="progress-bar" class="absolute top-0 left-0 h-2 bg-blue-600 w-0"></div>
-                <!-- Markers -->
-                <div class="absolute top-0 left-0 w-full flex justify-between px-2">
+            <!-- Scroll Progress -->
+            <div id="progress-bar" class="absolute top-0 left-0 h-2 bg-blue-600 w-0"></div>
+
+            <!-- Markers -->
+            <!-- <div class="absolute top-0 left-0 w-full flex justify-between px-2">
                     <a href="#profile" class="relative flex flex-col items-center group">
                         <span class="w-3 h-3 bg-gray-600 rounded-full group-hover:scale-125 transition z-10"></span>
                         <span class="mt-4 text-xs text-gray-700 whitespace-nowrap">Profile</span>
@@ -129,16 +165,22 @@
                         <span class="w-3 h-3 bg-gray-600 rounded-full group-hover:scale-125 transition z-10"></span>
                         <span class="mt-4 text-xs text-gray-700 whitespace-nowrap">Sports Achievements</span>
                     </a>
-                </div>
-            </div>
+                </div> -->
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-8 space-y-12">
+    <main class="max-w-4xl mx-auto px-6 py-8 space-y-12" style="background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0,0,0,0.02) 0px,
+        rgba(0,0,0,0.02) 1px,
+        transparent 1px,
+        transparent 8px
+      );">
         <!-- Profile -->
         <section id="profile">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Profile Summary</h2>
-            <p class="mt-2 text-gray-700">MSc Computer Science graduate from the University of Copenhagen with
+            <h2 id="profile-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Profile Summary</h2>
+            <p id="profile-summary" class="mt-2 text-gray-700">MSc Computer Science graduate from the University of
+                Copenhagen with
                 experience in data-driven software development, machine learning, and large-scale data processing.
                 Skilled in Python and core data science libraries, with projects spanning biometrics, media archives,
                 and computational modeling. I have a strong foundation in statistical analysis, algorithm development,
@@ -148,7 +190,7 @@
 
         <!-- Skills -->
         <section id="skills">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Technical Skills</h2>
+            <h2 id="skills-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Technical Skills</h2>
 
             <!-- Languages -->
             <div class="mt-4">
@@ -287,7 +329,7 @@
 
         <!-- Timeline -->
         <section id="timeline">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Timeline</h2>
+            <h2 id="timeline-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Timeline</h2>
             <!-- Legend -->
             <div class="mt-8 flex space-x-6">
                 <div class="flex items-center space-x-2">
@@ -308,7 +350,7 @@
                 <!-- Vertical line -->
                 <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l border-gray-300"></div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker Now-->
                 <div class="mb-12 flex justify-center relative">
                     <div id="current-date-marker"
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -355,7 +397,7 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2024-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -363,8 +405,7 @@
                     </div>
                 </div>
 
-                <!-- Item 3: Volunteer -->
-                <div class="mb-8 flex justify-start w-full">
+                <div class="mb-8 flex justify-start w-full group relative">
                     <div class="w-1/2 pr-6 text-right">
                         <h3 class="text-lg font-semibold text-purple-600">Student Bar Volunteer – Studenterhuset</h3>
                         <p class="text-sm text-gray-500">Sep 2023 – Oct 2024</p>
@@ -377,8 +418,7 @@
                     </div>
                 </div>
 
-                <!-- Item 2: Study -->
-                <div class="mb-8 flex justify-end w-full">
+                <div class="mb-8 flex justify-end w-full group relative">
                     <div class="w-1/2 relative">
                         <div
                             class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-green-600 rounded-full border-2 border-white">
@@ -392,7 +432,7 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2023-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -400,8 +440,7 @@
                     </div>
                 </div>
 
-                <!-- Item 1: Work -->
-                <div class="mb-8 flex justify-start w-full">
+                <div class="mb-8 flex justify-start w-full group relative">
                     <div class="w-1/2 pr-6 text-right">
                         <h3 class="text-lg font-semibold text-blue-600">Research Engineer - Kasikorn Labs</h3>
                         <p class="text-sm text-gray-500">Jun 2020 – Aug 2023</p>
@@ -414,7 +453,7 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2020-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -422,8 +461,7 @@
                     </div>
                 </div>
 
-                <!-- Item 2: Study -->
-                <div class="mb-8 flex justify-end w-full">
+                <div class="mb-8 flex justify-end w-full group relative">
                     <div class="w-1/2 relative">
                         <div
                             class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-2 border-white">
@@ -438,8 +476,7 @@
                     </div>
                 </div>
 
-                <!-- Item 1: Work -->
-                <div class="mb-8 flex justify-start w-full">
+                <div class="mb-8 flex justify-start w-full group relative">
                     <div class="w-1/2 pr-6 text-right">
                         <h3 class="text-lg font-semibold text-blue-600">Undergraduate Lab Assistant – University of
                             Wisconsin-Madison</h3>
@@ -453,8 +490,7 @@
                     </div>
                 </div>
 
-                <!-- Item 2: Study -->
-                <div class="mb-8 flex justify-end w-full">
+                <div class="mb-8 flex justify-end w-full group relative">
                     <div class="w-1/2 relative">
                         <div
                             class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-2 border-white">
@@ -468,7 +504,7 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2019-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -476,8 +512,7 @@
                     </div>
                 </div>
 
-                <!-- Item 1: Work -->
-                <div class="mb-8 flex justify-start w-full">
+                <div class="mb-8 flex justify-start w-full group relative">
                     <div class="w-1/2 pr-6 text-right">
                         <h3 class="text-lg font-semibold text-blue-600">Undergraduate Project Assistant – University of
                             Wisconsin-Madison (WISEST)</h3>
@@ -491,7 +526,7 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2018-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -499,8 +534,7 @@
                     </div>
                 </div>
 
-                <!-- Item 2: Study -->
-                <div class="mb-8 flex justify-end w-full">
+                <div class="mb-8 flex justify-end w-full group relative">
                     <div class="w-1/2 relative">
                         <div
                             class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-green-600 rounded-full border-2 border-white">
@@ -515,7 +549,7 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2016-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -523,8 +557,7 @@
                     </div>
                 </div>
 
-                <!-- Item 1: Work -->
-                <div class="mb-8 flex justify-start w-full">
+                <div class="mb-8 flex justify-start w-full group relative">
                     <div class="w-1/2 pr-6 text-right">
                         <h3 class="text-lg font-semibold text-green-600">HS Student – Suankularb Wittayalai School</h3>
                         <p class="text-sm text-gray-500">2012 – 2016</p>
@@ -537,11 +570,19 @@
                     </div>
                 </div>
 
-                <!-- Year Marker -->
+                <!-- Year Marker 2012-->
                 <div class="mb-12 flex justify-center relative">
                     <div
                         class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
                         2012
+                    </div>
+                </div>
+
+                <!-- Year Marker Past-->
+                <div class="mb-12 flex justify-center relative">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
+                        A Distant Past
                     </div>
                 </div>
             </div>
@@ -549,7 +590,7 @@
 
         <!-- Work Experience -->
         <section id="work">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Work Experience</h2>
+            <h2 id="work-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Work Experience</h2>
             <div class="mt-4 grid gap-6 md:grid-cols-2">
 
                 <!-- Studentermedhjælper -->
@@ -694,7 +735,7 @@
 
         <!-- Education -->
         <section id="education">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Education</h2>
+            <h2 id="education-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Education</h2>
             <div class="mt-4 grid gap-6">
                 <div class="bg-white shadow rounded-xl p-4 hover:shadow-md transition">
                     <h3 class="font-semibold">University of Copenhagen, Denmark</h3>
@@ -717,7 +758,8 @@
 
         <!-- Certifications Carousel -->
         <section id="further" class="relative">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Continual Education</h2>
+            <h2 id="further-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Continual Education
+            </h2>
 
             <!-- Carousel Container -->
             <div class="mt-4 relative">
@@ -800,7 +842,7 @@
 
         <!-- Volunteer -->
         <section id="volunteer">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Volunteer Work</h2>
+            <h2 id="volunteer-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Volunteer Work</h2>
             <div class="relative border-l border-gray-300 mt-4 space-y-6">
                 <!-- Item 1 -->
                 <div class="ml-4">
@@ -819,7 +861,7 @@
 
         <!-- Languages -->
         <section id="languages">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Language Skills</h2>
+            <h2 id="languages-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Language Skills</h2>
             <div class="mt-4 flex flex-wrap gap-4">
 
                 <!-- Thai -->
@@ -857,7 +899,7 @@
 
         <!-- Interests -->
         <section id="interests">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Interests</h2>
+            <h2 id="interests-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Interests</h2>
             <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
                     <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/coffee/coffee-original.svg"
@@ -899,7 +941,7 @@
 
         <!-- Sports Achievements Carousel (Multitier) -->
         <section id="sports">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Sports Achievements</h2>
+            <h2 id="sports-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Sports Achievements</h2>
 
             <div class="mt-4 relative">
                 <!-- Left Arrow -->
@@ -1026,7 +1068,8 @@
 
         <!-- Weather -->
         <section id="weather" class="mt-8 bg-blue-50 rounded-xl shadow p-4 max-w-md mx-auto">
-            <h2 class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Weather in Copenhagen</h2>
+            <h2 id="weather-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Weather in Copenhagen
+            </h2>
             <div class="mt-2 flex items-center">
                 <div>
                     <p id="weather-desc" class="text-gray-700">Loading...</p>
