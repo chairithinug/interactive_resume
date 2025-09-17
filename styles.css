@@ -17,7 +17,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: white;
     z-index: 50;
     transition: transform 0.3s ease;
     background-image: repeating-linear-gradient(45deg,
@@ -50,7 +49,7 @@ html,
 body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .blobs-container {

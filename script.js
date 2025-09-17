@@ -408,7 +408,7 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
 let lastScrollTop = 0;
 const header = document.getElementById('main-header');
 const delta = 5;
-const scrollUpTolerance = 50;
+const scrollUpTolerance = 10;
 let headerHidden = false;
 
 window.addEventListener('scroll', () => {
@@ -416,7 +416,7 @@ window.addEventListener('scroll', () => {
 
     if (Math.abs(st - lastScrollTop) <= delta) return;
 
-    if (st > lastScrollTop && st > 100) {
+    if (st > lastScrollTop && st > header.offsetHeight) {
         // scroll down → hide
         if (!headerHidden) {
             header.style.transform = 'translateY(-100%)';
