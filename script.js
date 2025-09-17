@@ -406,32 +406,31 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
 });
 
 let lastScrollTop = 0;
-let headerHidden = false;
 const header = document.getElementById('main-header');
-const delta = 5; // minimum scroll to consider
-const headerHeight = header.offsetHeight;
-const scrollUpTolerance = 50; // only show if user scrolls up by 50px
-
-let lastHideScroll = 0;
+const delta = 5;
+const scrollUpTolerance = 50;
+let headerHidden = false;
 
 window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const st = window.pageYOffset || document.documentElement.scrollTop;
 
-    // ignore tiny scrolls
-    if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
+    if (Math.abs(st - lastScrollTop) <= delta) return;
 
-    if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
-        // Scroll down → hide header
-        header.classList.add('-translate-y-full');
-        headerHidden = true;
-        lastHideScroll = scrollTop;
-    } else if (headerHidden && scrollTop < lastHideScroll - scrollUpTolerance) {
-        // Scroll up beyond tolerance → show header
-        header.classList.remove('-translate-y-full');
-        headerHidden = false;
+    if (st > lastScrollTop && st > 100) {
+        // scroll down → hide
+        if (!headerHidden) {
+            header.style.transform = 'translateY(-100%)';
+            headerHidden = true;
+        }
+    } else if (st + scrollUpTolerance < lastScrollTop) {
+        // scroll up → show
+        if (headerHidden) {
+            header.style.transform = 'translateY(0)';
+            headerHidden = false;
+        }
     }
 
-    lastScrollTop = scrollTop;
+    lastScrollTop = st;
 });
 
 document.querySelectorAll('.flip-card').forEach(card => {
@@ -439,6 +438,4 @@ document.querySelectorAll('.flip-card').forEach(card => {
     const initialZ = (Math.random() - 0.5) * 4; // -2deg to 2deg
     card.style.transform = `rotateZ(${initialZ}deg)`;
     card.style.animationDuration = `${duration}s`;
-  });
-
-  
+});

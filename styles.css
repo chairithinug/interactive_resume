@@ -1,14 +1,41 @@
-/* smooth transform for header */
-#main-header {
-    transition: transform 0.3s ease;
+header {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+
+    /* Adjustments for tablets and mobile devices */
+    .some-element {
+        padding: 10px;
+        font-size: 14px;
+    }
 }
 
 #main-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 50;
+    transition: transform 0.3s ease;
     background-image: repeating-linear-gradient(45deg,
             rgba(0, 0, 0, 0.02) 0px,
             rgba(0, 0, 0, 0.02) 1px,
             transparent 1px,
             transparent 4px);
+}
+
+#progress-bar {
+    position: fixed;
+    /* sticks independently of header transform */
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background-color: #2563eb;
+    z-index: 60;
 }
 
 .blob {
@@ -19,11 +46,12 @@
     overflow: hidden;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-  }
+}
 
 .blobs-container {
     position: fixed;
