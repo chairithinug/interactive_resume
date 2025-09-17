@@ -21,7 +21,7 @@ function blobBackground() {
         "#FF6B6B", "#4ECDC4", "#556270", "#C7F464", "#FF6F91",
         "#845EC2", "#FFC75F", "#008F7A", "#FF9671", "#2C73D2",
         "#F9F871", "#D65DB1", "#00C9A7", "#FFA500", "#A4DE02"
-      ];
+    ];
     const container = document.querySelector(".blobs-container");
     if (!container) return;
 
@@ -31,17 +31,16 @@ function blobBackground() {
         const blob = document.createElement("div");
         blob.className = "blob";
 
-        // Random size
-        const size = 60 + Math.random() * 120;
-        blob.style.width = `${size}px`;
-        blob.style.height = `${size}px`;
-
         // Random color
         blob.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
         // Random position
-        blob.style.top = `${Math.random() * 100}%`;
-        blob.style.left = `${Math.random() * 100}%`;
+        const size = 60 + Math.random() * 120;
+        blob.style.width = `${size}px`;
+        blob.style.height = `${size}px`;
+
+        blob.style.top = `${Math.random() * (100 - (size / window.innerHeight) * 100)}%`;
+        blob.style.left = `${Math.random() * (100 - (size / window.innerWidth) * 100)}%`;
 
         // Random animation duration and delay
         const duration = 15 + Math.random() * 15;
