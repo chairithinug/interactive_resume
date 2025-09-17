@@ -7,7 +7,9 @@ header {
     position: sticky;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw; /* full viewport width */
+    left: 0;
+    right: 0;
     z-index: 50;
     transition: transform 0.3s ease;
     background-image: repeating-linear-gradient(45deg,
