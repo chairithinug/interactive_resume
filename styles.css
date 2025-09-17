@@ -66,20 +66,24 @@
     perspective: 1000px;
     display: inline-block;
     transition: transform 0.3s ease;
+    animation: swing 6s ease-in-out infinite; /* organic swinging */
+}
+
+/* Stop swing/wiggle if flipped */
+.flip-card.flipped {
+    animation: none;
 }
 
 .flip-card-inner {
     position: relative;
     width: 100%;
     height: 250px;
-    /* keep same height for both sides */
     transition: transform 0.6s;
     transform-style: preserve-3d;
 }
 
 .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
-    /* no scaling */
 }
 
 .flip-card-front,
@@ -96,6 +100,42 @@
 .flip-card-front {
     z-index: 2;
     transform: rotateY(0deg);
+    position: relative;
+    overflow: hidden;
+}
+
+.flip-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical centering */
+    align-items: center;     /* horizontal centering */
+    text-align: center;      /* center text */
+    height: 100%;            /* make sure it fills the card */
+}
+
+/* Bottom-left fold hint - smoother */
+.flip-card-front::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: white; /* match card color */
+    border-bottom-left-radius: 4px;
+    box-shadow: -2px 2px 4px rgba(0,0,0,0.1); /* subtle shading to suggest fold */
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Fold wiggle on hover/click hint */
+.flip-card:hover::after,
+.flip-card-front:active::after {
+    transform: rotate(-30deg) scale(1.1);
+    opacity: 0.9;
 }
 
 .flip-card-back {
@@ -106,57 +146,28 @@
 
 /* Wiggle animation */
 @keyframes wiggle {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(1deg);
-    }
-
-    50% {
-        transform: rotate(0deg);
-    }
-
-    75% {
-        transform: rotate(-1deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
 }
 
-/* Apply wiggle on hover */
-.flip-card:hover {
+/* Wiggle on hover (only if not flipped) */
+.flip-card:not(.flipped):hover {
     animation: wiggle 1s infinite ease-in-out;
 }
 
-/* Organic swinging animation */
+/* Organic swinging animation (only if not flipped) */
 @keyframes swing {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-
-    25% {
-        transform: rotateX(1deg) rotateY(-1deg) rotateZ(1deg);
-    }
-
-    50% {
-        transform: rotateX(-1deg) rotateY(1deg) rotateZ(-1deg);
-    }
-
-    75% {
-        transform: rotateX(1deg) rotateY(0deg) rotateZ(1deg);
-    }
-
-    100% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    25% { transform: rotateX(1deg) rotateY(-1deg) rotateZ(1deg); }
+    50% { transform: rotateX(-1deg) rotateY(1deg) rotateZ(-1deg); }
+    75% { transform: rotateX(1deg) rotateY(0deg) rotateZ(1deg); }
+    100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
 }
 
-/* Apply swing animation to all cards */
-.flip-card {
+.flip-card:not(.flipped) {
     animation: swing 6s ease-in-out infinite;
 }
 
