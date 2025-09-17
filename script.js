@@ -433,3 +433,10 @@ window.addEventListener('scroll', () => {
 
     lastScrollTop = scrollTop;
 });
+
+document.querySelectorAll('.flip-card').forEach(card => {
+    const duration = 5 + Math.random() * 4; // 5s - 9s
+    const initialZ = (Math.random() - 0.5) * 4; // -2deg to 2deg
+    card.style.transform = `rotateZ(${initialZ}deg)`;
+    card.style.animationDuration = `${duration}s`;
+  });
