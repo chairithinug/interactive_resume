@@ -406,31 +406,27 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
 });
 
 let lastScrollTop = 0;
+let headerHidden = false;
 const header = document.getElementById('main-header');
 const delta = 5;
-const scrollUpTolerance = 10;
-let headerHidden = false;
+const scrollUpTolerance = 50;
 
 window.addEventListener('scroll', () => {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (Math.abs(st - lastScrollTop) <= delta) return;
+    if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
 
-    if (st > lastScrollTop && st > header.offsetHeight) {
-        // scroll down → hide
-        if (!headerHidden) {
-            header.style.transform = 'translateY(-100%)';
-            headerHidden = true;
-        }
-    } else if (st + scrollUpTolerance < lastScrollTop) {
-        // scroll up → show
-        if (headerHidden) {
-            header.style.transform = 'translateY(0)';
-            headerHidden = false;
-        }
+    if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+        // Scroll down → hide
+        header.style.top = `-${header.offsetHeight}px`;
+        headerHidden = true;
+    } else if (headerHidden && scrollTop < lastScrollTop - scrollUpTolerance) {
+        // Scroll up → show
+        header.style.top = '0';
+        headerHidden = false;
     }
 
-    lastScrollTop = st;
+    lastScrollTop = scrollTop;
 });
 
 document.querySelectorAll('.flip-card').forEach(card => {
