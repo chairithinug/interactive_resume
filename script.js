@@ -406,21 +406,29 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
 });
 
 let lastScrollTop = 0;
+let headerHidden = false;
 const header = document.getElementById('main-header');
-const delta = 5; // minimum scroll to trigger
+const delta = 5; // minimum scroll to consider
 const headerHeight = header.offsetHeight;
+const scrollUpTolerance = 50; // only show if user scrolls up by 50px
+
+let lastHideScroll = 0;
 
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if(Math.abs(scrollTop - lastScrollTop) <= delta) return; // ignore tiny scrolls
+    // ignore tiny scrolls
+    if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
 
-    if(scrollTop > lastScrollTop && scrollTop > headerHeight) {
-        // Scroll down → hide
+    if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+        // Scroll down → hide header
         header.classList.add('-translate-y-full');
-    } else {
-        // Scroll up → show
+        headerHidden = true;
+        lastHideScroll = scrollTop;
+    } else if (headerHidden && scrollTop < lastHideScroll - scrollUpTolerance) {
+        // Scroll up beyond tolerance → show header
         header.classList.remove('-translate-y-full');
+        headerHidden = false;
     }
 
     lastScrollTop = scrollTop;
