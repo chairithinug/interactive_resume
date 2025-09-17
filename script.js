@@ -101,10 +101,6 @@ function blobBackground() {
     animate();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    blobBackground();
-});
-
 function updateCountdowns() {
     const countdowns = document.querySelectorAll(".countdown");
     const now = new Date().getTime();
@@ -314,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sportsCarousel();
     darkMode();
     getWeather();
-    blobPhysics();
+    blobBackground();
     // Example: change language on click
     document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.addEventListener("click", () => {
