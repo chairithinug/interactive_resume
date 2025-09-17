@@ -3,6 +3,14 @@
     transition: transform 0.3s ease;
 }
 
+#main-header {
+    background-image: repeating-linear-gradient(45deg,
+            rgba(0, 0, 0, 0.02) 0px,
+            rgba(0, 0, 0, 0.02) 1px,
+            transparent 1px,
+            transparent 4px);
+}
+
 .blob {
     position: absolute;
     border-radius: 50%;
@@ -66,7 +74,8 @@
     perspective: 1000px;
     display: inline-block;
     transition: transform 0.3s ease;
-    animation: swing 6s ease-in-out infinite; /* organic swinging */
+    animation: swing 6s ease-in-out infinite;
+    /* organic swinging */
 }
 
 /* Stop swing/wiggle if flipped */
@@ -107,10 +116,14 @@
 .flip-card-front {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertical centering */
-    align-items: center;     /* horizontal centering */
-    text-align: center;      /* center text */
-    height: 100%;            /* make sure it fills the card */
+    justify-content: center;
+    /* vertical centering */
+    align-items: center;
+    /* horizontal centering */
+    text-align: center;
+    /* center text */
+    height: 100%;
+    /* make sure it fills the card */
 }
 
 /* Bottom-left fold hint - smoother */
@@ -121,9 +134,11 @@
     left: 0;
     width: 20px;
     height: 20px;
-    background: white; /* match card color */
+    background: white;
+    /* match card color */
     border-bottom-left-radius: 4px;
-    box-shadow: -2px 2px 4px rgba(0,0,0,0.1); /* subtle shading to suggest fold */
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
+    /* subtle shading to suggest fold */
     transform: rotate(-45deg);
     transform-origin: bottom left;
     pointer-events: none;
@@ -146,11 +161,25 @@
 
 /* Wiggle animation */
 @keyframes wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(1deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-1deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(1deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 /* Wiggle on hover (only if not flipped) */
@@ -160,11 +189,25 @@
 
 /* Organic swinging animation (only if not flipped) */
 @keyframes swing {
-    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    25% { transform: rotateX(1deg) rotateY(-1deg) rotateZ(1deg); }
-    50% { transform: rotateX(-1deg) rotateY(1deg) rotateZ(-1deg); }
-    75% { transform: rotateX(1deg) rotateY(0deg) rotateZ(1deg); }
-    100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    25% {
+        transform: rotateX(1deg) rotateY(-1deg) rotateZ(1deg);
+    }
+
+    50% {
+        transform: rotateX(-1deg) rotateY(1deg) rotateZ(-1deg);
+    }
+
+    75% {
+        transform: rotateX(1deg) rotateY(0deg) rotateZ(1deg);
+    }
+
+    100% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
 }
 
 .flip-card:not(.flipped) {
@@ -187,5 +230,6 @@
 }
 
 .countdown {
-    font-variant-numeric: tabular-nums; /* makes numbers align evenly */
-  }
+    font-variant-numeric: tabular-nums;
+    /* makes numbers align evenly */
+}

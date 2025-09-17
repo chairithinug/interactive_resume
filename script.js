@@ -440,3 +440,5 @@ document.querySelectorAll('.flip-card').forEach(card => {
     card.style.transform = `rotateZ(${initialZ}deg)`;
     card.style.animationDuration = `${duration}s`;
   });
+
+  
