@@ -321,13 +321,42 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(updateCountdowns, 1000);
 updateCountdowns(); // run immediately on load
 
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("cookie-overlay");
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const rejectBtn = document.getElementById("reject-cookies");
+
+    function hideBanner() {
+        overlay.style.display = "none";
+        banner.style.display = "none";
+    }
+
+    // Check if user has already made a choice
+    const cookieConsent = localStorage.getItem("cookieConsent");
+    if (cookieConsent === "accepted" || cookieConsent === "rejected") {
+        hideBanner();
+    }
+
+    acceptBtn.addEventListener("click", () => {
+        localStorage.setItem("cookieConsent", "accepted");
+        hideBanner();
+        // Load Google Analytics or other tracking scripts here
+    });
+
+    rejectBtn.addEventListener("click", () => {
+        localStorage.setItem("cookieConsent", "rejected");
+        hideBanner();
+    });
+});
+
 document.getElementById("accept-cookies").addEventListener("click", () => {
     // Hide banner
     document.getElementById("cookie-banner").style.display = "none";
 
     // Save consent in localStorage
     localStorage.setItem("analytics-consent", "true");
-    
+
 
     // Load GA script dynamically
     const script = document.createElement("script");
