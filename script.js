@@ -320,3 +320,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 setInterval(updateCountdowns, 1000);
 updateCountdowns(); // run immediately on load
+
+document.getElementById("accept-cookies").addEventListener("click", () => {
+    // Hide banner
+    document.getElementById("cookie-banner").style.display = "none";
+  
+    // Save consent in localStorage
+    localStorage.setItem("analytics-consent", "true");
+  
+    // Load GA script dynamically
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID";
+    script.async = true;
+    document.head.appendChild(script);
+  
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_MEASUREMENT_ID');
+  });
+  
+  // Optional: handle reject button
+  document.getElementById("reject-cookies").addEventListener("click", () => {
+    document.getElementById("cookie-banner").style.display = "none";
+    localStorage.setItem("analytics-consent", "false");
+  });
