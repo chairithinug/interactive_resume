@@ -34,7 +34,6 @@ header {
     position: absolute;
     border-radius: 50%;
     opacity: 0.8;
-    max-width: 100vw;
     overflow: hidden;
 }
 
