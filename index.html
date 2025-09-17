@@ -174,8 +174,7 @@
     </header>
 
     <main class="relative max-w-4xl mx-auto px-6 py-8 text-gray-700 dark:text-gray-300">
-        <!-- Animated background -->
-        <div class="absolute inset-0 bg-pattern animate-pattern opacity-10 pointer-events-none"></div>
+        <div class="blobs-container pointer-events-none fixed inset-0 -z-10"></div>
 
         <!-- Page content -->
         <div class="relative z-10 space-y-10">
@@ -1049,44 +1048,22 @@
             </section>
 
             <!-- Interests -->
-            <section id="interests">
+            <section id="interests" class="relative">
                 <h2 id="interests-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Interests</h2>
-                <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 relative z-10">
                     <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/coffee/coffee-original.svg"
-                        class="w-12 h-12 mb-2" alt="Coffee & Tea"> -->
                         <span class="text-sm text-gray-700 text-center">Coffee & Tea Crafting</span>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/travel/travel-original.svg"
-                        class="w-12 h-12 mb-2" alt="Travel"> -->
                         <span class="text-sm text-gray-700 text-center">Travel</span>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/camera/camera-original.svg"
-                        class="w-12 h-12 mb-2" alt="Photography"> -->
                         <span class="text-sm text-gray-700 text-center">Photography</span>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/running/running-original.svg"
-                        class="w-12 h-12 mb-2" alt="Running"> -->
-                        <span class="text-sm text-gray-700 text-center">IronMan 70.3 & Marathon Training</span>
+                        <span class="text-sm text-gray-700 text-center">IronMan & Marathon Training</span>
                     </div>
-                    <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cycling/cycling-original.svg"
-                        class="w-12 h-12 mb-2" alt="Cycling"> -->
-                        <span class="text-sm text-gray-700 text-center">Long-Distance Cycling</span>
-                    </div>
-                    <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/piano/piano-original.svg"
-                        class="w-12 h-12 mb-2" alt="Piano"> -->
-                        <span class="text-sm text-gray-700 text-center">Piano</span>
-                    </div>
-                    <div class="flex flex-col items-center bg-white shadow rounded-xl p-4 hover:scale-105 transition">
-                        <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/book/book-original.svg"
-                        class="w-12 h-12 mb-2" alt="Learning"> -->
-                        <span class="text-sm text-gray-700 text-center">Lifelong Learning</span>
-                    </div>
+                    <!-- Add more interest cards -->
                 </div>
             </section>
 
