@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     certCarousel();
     sportsCarousel();
     darkMode();
-    weather();
+    getWeather();
 
     // Example: change language on click
     document.querySelectorAll(".lang-btn").forEach(btn => {
@@ -157,16 +157,15 @@ function sportsCarousel() {
     });
 }
 
-function weather() {
-    // Weather
-    fetch("https://api.open-meteo.com/v1/forecast?latitude=55.6758&longitude=12.5683&current=temperature_2m,weathercode")
-        .then(res => res.json())
-        .then(data => {
-            const temp = data.current.temperature_2m;
-            const code = data.current.weathercode;
-            document.getElementById("weather-temp").textContent = `${temp}°C`;
-            document.getElementById("weather-desc").textContent = `Weather code: ${code}`;
-        });
+async function getWeather() {
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=55.6758&longitude=12.5683&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation,weather_code";
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const current = data.current;
+
+    document.getElementById("weather-temp").textContent = `${current.temperature_2m}°C`;
+    document.getElementById("weather-desc").textContent = `Humidity: ${current.relative_humidity_2m}%, Wind: ${current.wind_speed_10m} m/s`;
 }
 
 function darkMode() {

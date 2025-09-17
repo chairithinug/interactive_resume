@@ -1,3 +1,32 @@
+.bg-pattern {
+    background-image: repeating-linear-gradient(45deg,
+            rgba(0, 0, 0, 0.02) 0px,
+            rgba(0, 0, 0, 0.02) 2px,
+            transparent 2px,
+            transparent 16px);
+    background-size: 400% 400%;
+    /* scale up so movement is noticeable */
+}
+
+@keyframes patternShift {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 200% 200%;
+    }
+
+    /* move more */
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.animate-pattern {
+    animation: patternShift 20s linear infinite;
+}
+
 .flip-card {
     perspective: 1000px;
 }
