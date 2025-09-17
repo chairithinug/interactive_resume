@@ -28,6 +28,8 @@ header {
     width: 0;
     background-color: #2563eb;
     z-index: 60;
+    width: 100%;
+    max-width: 100%;
 }
 
 .blob {
