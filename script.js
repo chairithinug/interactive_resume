@@ -1,9 +1,9 @@
 function blobBackground() {
     const colors = [
-        "#FBB6CE","#BFDBFE","#C6F6D5","#FEF08A","#D8B4FE",
-        "#F87171","#34D399","#60A5FA","#FCD34D","#A78BFA",
-        "#F472B6","#22D3EE","#4ADE80","#FACC15","#C084FC",
-        "#F59E0B","#EC4899","#3B82F6","#10B981","#EAB308"
+        "#FBB6CE", "#BFDBFE", "#C6F6D5", "#FEF08A", "#D8B4FE",
+        "#F87171", "#34D399", "#60A5FA", "#FCD34D", "#A78BFA",
+        "#F472B6", "#22D3EE", "#4ADE80", "#FACC15", "#C084FC",
+        "#F59E0B", "#EC4899", "#3B82F6", "#10B981", "#EAB308"
     ];
     const container = document.createElement("div");
     container.className = "blobs-container fixed inset-0 -z-10 pointer-events-none";
@@ -58,17 +58,17 @@ function blobBackground() {
             // Bounce off other blobs
             for (let j = i + 1; j < blobs.length; j++) {
                 const o = blobs[j];
-                const dx = (b.x + b.offsetWidth/2) - (o.x + o.offsetWidth/2);
-                const dy = (b.y + b.offsetHeight/2) - (o.y + o.offsetHeight/2);
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                const minDist = (b.offsetWidth + o.offsetWidth)/2;
+                const dx = (b.x + b.offsetWidth / 2) - (o.x + o.offsetWidth / 2);
+                const dy = (b.y + b.offsetHeight / 2) - (o.y + o.offsetHeight / 2);
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const minDist = (b.offsetWidth + o.offsetWidth) / 2;
                 if (dist < minDist && dist > 0) {
                     const angle = Math.atan2(dy, dx);
                     const overlap = minDist - dist;
-                    b.x += Math.cos(angle) * (overlap/2);
-                    b.y += Math.sin(angle) * (overlap/2);
-                    o.x -= Math.cos(angle) * (overlap/2);
-                    o.y -= Math.sin(angle) * (overlap/2);
+                    b.x += Math.cos(angle) * (overlap / 2);
+                    b.y += Math.sin(angle) * (overlap / 2);
+                    o.x -= Math.cos(angle) * (overlap / 2);
+                    o.y -= Math.sin(angle) * (overlap / 2);
                     // swap velocities slightly
                     const tempVx = b.vx; const tempVy = b.vy;
                     b.vx = o.vx; b.vy = o.vy;
@@ -251,7 +251,7 @@ async function getWeather() {
 
     const current = data.current;
 
-    document.getElementById("weather-temp").textContent = `${current.temperature_2m}°C`;
+    document.getElementById("weather-temp").textContent = `Copenhagen: ${current.temperature_2m}°C`;
     document.getElementById("weather-desc").textContent = `Humidity: ${current.relative_humidity_2m}%, Wind: ${current.wind_speed_10m} m/s`;
 }
 
@@ -324,24 +324,31 @@ updateCountdowns(); // run immediately on load
 document.getElementById("accept-cookies").addEventListener("click", () => {
     // Hide banner
     document.getElementById("cookie-banner").style.display = "none";
-  
+
     // Save consent in localStorage
     localStorage.setItem("analytics-consent", "true");
-  
+    
+
     // Load GA script dynamically
     const script = document.createElement("script");
-    script.src = "https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID";
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-FJQNSE4GQC";
     script.async = true;
     document.head.appendChild(script);
-  
+
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'YOUR_GA_MEASUREMENT_ID');
-  });
-  
-  // Optional: handle reject button
-  document.getElementById("reject-cookies").addEventListener("click", () => {
+    gtag('config', 'G-FJQNSE4GQC', { 'anonymize_ip': true });
+    gtag('event', 'click', {
+        'event_category': 'Button',
+        'event_label': 'Download Resume'
+    });
+    // alert('You have accepted analytics cookies. Your interactions will be tracked.');
+});
+
+// Optional: handle reject button
+document.getElementById("reject-cookies").addEventListener("click", () => {
     document.getElementById("cookie-banner").style.display = "none";
     localStorage.setItem("analytics-consent", "false");
-  });
+    // alert('You have rejected analytics cookies. No data will be collected.');
+});
