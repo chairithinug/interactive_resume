@@ -20,7 +20,7 @@ header {
 }
 
 #progress-bar {
-    position: sticky;
+    position: fixed;
     /* sticks independently of header transform */
     top: 0;
     left: 0;
@@ -29,7 +29,7 @@ header {
     background-color: #2563eb;
     z-index: 60;
     width: 100%;
-    max-width: 100%;
+    max-width: 100vw; /* never exceed viewport */
 }
 
 .blob {
