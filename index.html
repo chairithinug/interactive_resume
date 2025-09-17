@@ -84,30 +84,32 @@
                 <p>🔗 <a href="https://www.strava.com/athletes/137178417" target="_blank"
                         class="text-orange-600 hover:underline">Strava</a></p>
             </div>
+            <!-- Weather & Controls -->
             <div class="flex flex-col items-center space-y-2">
-                <!-- Language Selector (top) -->
+
+                <!-- Compact Weather -->
+                <div
+                    class="bg-blue-50 dark:bg-blue-900 rounded-xl shadow px-3 py-1 text-xs text-gray-700 dark:text-gray-200 flex flex-col items-center">
+                    <p id="weather-temp" class="font-semibold"></p>
+                    <p id="weather-desc"></p>
+                </div>
+
+                <!-- Language Selector -->
                 <div class="flex items-center space-x-2 text-sm">
-                    <!-- EN -->
                     <button class="lang-btn flex items-center px-2 py-1 hover:bg-gray-100 rounded" data-lang="en">
                         <span class="mr-1 text-lg">🇺🇸</span> EN
                     </button>
-
                     <span class="text-gray-400">|</span>
-
-                    <!-- TH -->
                     <button class="lang-btn flex items-center px-2 py-1 hover:bg-gray-100 rounded" data-lang="th">
                         <span class="mr-1 text-lg">🇹🇭</span> TH
                     </button>
-
                     <span class="text-gray-400">|</span>
-
-                    <!-- DA -->
                     <button class="lang-btn flex items-center px-2 py-1 hover:bg-gray-100 rounded" data-lang="da">
                         <span class="mr-1 text-lg">🇩🇰</span> DA
                     </button>
                 </div>
 
-                <!-- Dark Mode Toggle (below) -->
+                <!-- Dark Mode Toggle -->
                 <div class="flex items-center space-x-2">
                     <span class="text-sm text-gray-700 dark:text-gray-300">Light Mode</span>
                     <button id="dark-toggle"
@@ -1213,23 +1215,6 @@
                         </div>
 
                     </div>
-                </div>
-            </section>
-
-            <!-- Weather -->
-            <section id="weather" class="mt-8 bg-blue-50 rounded-xl shadow p-4 max-w-md mx-auto">
-                <h2 id="weather-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">
-                    Weather in Copenhagen
-                </h2>
-
-                <div class="mt-2 space-y-1">
-                    <p id="weather-desc" class="text-gray-700">Loading...</p>
-                    <p id="weather-temp"></p>
-                    <p id="weather-humidity"></p>
-                    <p id="weather-precipitation"></p>
-                    <p id="weather-rain"></p>
-                    <p id="weather-wind"></p>
-                    <p id="weather-apparent"></p>
                 </div>
             </section>
         </div>
