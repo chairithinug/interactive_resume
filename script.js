@@ -404,3 +404,24 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
     localStorage.setItem("analytics-consent", "false");
     // alert('You have rejected analytics cookies. No data will be collected.');
 });
+
+let lastScrollTop = 0;
+const header = document.getElementById('main-header');
+const delta = 5; // minimum scroll to trigger
+const headerHeight = header.offsetHeight;
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if(Math.abs(scrollTop - lastScrollTop) <= delta) return; // ignore tiny scrolls
+
+    if(scrollTop > lastScrollTop && scrollTop > headerHeight) {
+        // Scroll down → hide
+        header.classList.add('-translate-y-full');
+    } else {
+        // Scroll up → show
+        header.classList.remove('-translate-y-full');
+    }
+
+    lastScrollTop = scrollTop;
+});

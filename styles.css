@@ -1,3 +1,8 @@
+/* smooth transform for header */
+#main-header {
+    transition: transform 0.3s ease;
+}
+
 .blob {
     position: absolute;
     border-radius: 50%;
