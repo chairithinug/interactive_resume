@@ -20,7 +20,7 @@ header {
 }
 
 #progress-bar {
-    position: fixed;
+    position: sticky;
     /* sticks independently of header transform */
     top: 0;
     left: 0;
