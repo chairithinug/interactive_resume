@@ -80,12 +80,14 @@ function blobBackground() {
 
             // Age & fade out
             b.age += 0.016; // approx 60fps
-            if (b.age > b.lifespan) {
+            if (b.age > b.lifespan && !b._isFadingOut) {
+                b._isFadingOut = true; // mark as already fading
                 b.style.transition = "opacity 2s";
                 b.style.opacity = 0;
+            
                 setTimeout(() => {
-                    container.removeChild(b);
-                    blobs.splice(blobs.indexOf(b), 1);
+                    b.remove?.(); // modern safe way, won’t throw if already removed
+                    blobs = blobs.filter(blob => blob !== b);
                 }, 2000);
             }
         });
