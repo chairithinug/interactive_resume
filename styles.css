@@ -18,17 +18,13 @@ header#main-header {
 }
 
 #progress-bar {
-    position: fixed;
-    /* sticks independently of header transform */
+    position: fixed;      /* stick to viewport top */
     top: 0;
     left: 0;
     height: 4px;
-    width: 0;
+    width: 0;             /* start at 0 */
     background-color: #2563eb;
-    z-index: 60;
-    width: 100%;
-    max-width: 100vw;
-    /* never exceed viewport */
+    z-index: 9999;
 }
 
 .blob {
@@ -264,4 +260,114 @@ header#main-header {
 .flex-shrink-0 {
     min-width: 0;
     /* allow shrinking on small screens */
+}
+
+
+
+
+
+/* Timeline entry wrapper */
+.timeline-entry {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: 3rem;
+    /* mb-12 */
+    cursor: pointer;
+    group: relative;
+}
+
+/* Left/Right content containers */
+.timeline-content {
+    width: 50%;
+}
+
+.timeline-content.left {
+    padding-right: 1.5rem;
+    /* pr-6 */
+    text-align: right;
+}
+
+.timeline-content.right {
+    padding-left: 1.5rem;
+    /* pl-6 */
+    text-align: left;
+}
+
+/* Dot in the middle */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0.5rem;
+    /* top-2 */
+    width: 1rem;
+    /* w-4 */
+    height: 1rem;
+    /* h-4 */
+    border-radius: 9999px;
+    border: 2px solid white;
+    transform: translateX(-50%);
+}
+
+/* All titles semi-bold */
+.timeline-entry h3 {
+    font-weight: 600;
+    /* keeps font-semibold */
+    /* font-size: 1.125rem; */
+    /* matches text-lg */
+}
+
+/* Title and description color based on data-type */
+.timeline-entry[data-type="fulltime"] h3,
+.timeline-entry[data-type="fulltime"] .timeline-dot {
+    color: #1d4ed8;
+    /* blue */
+}
+
+.timeline-entry[data-type="parttime"] h3,
+.timeline-entry[data-type="parttime"] .timeline-dot {
+    color: #ea580c;
+    /* orange */
+}
+
+.timeline-entry[data-type="academic"] h3,
+.timeline-entry[data-type="academic"] .timeline-dot {
+    color: #16a34a;
+    /* green */
+}
+
+.timeline-entry[data-type="volunteer"] h3,
+.timeline-entry[data-type="volunteer"] .timeline-dot {
+    color: #7c3aed;
+    /* purple */
+}
+
+/* Dot background by data-type */
+.timeline-entry[data-type="fulltime"] .timeline-dot {
+    background-color: #1d4ed8;
+}
+
+.timeline-entry[data-type="parttime"] .timeline-dot {
+    background-color: #ea580c;
+}
+
+.timeline-entry[data-type="academic"] .timeline-dot {
+    background-color: #16a34a;
+}
+
+.timeline-entry[data-type="volunteer"] .timeline-dot {
+    background-color: #7c3aed;
+}
+
+/* Left/Right flipping */
+.timeline-entry.left {
+    flex-direction: row;
+}
+
+.timeline-entry.right {
+    flex-direction: row-reverse;
+}
+
+.timeline-dot {
+    border-color: white;           /* stays visible in both modes */
 }

@@ -437,3 +437,13 @@ document.querySelectorAll('.flip-card').forEach(card => {
     card.style.transform = `rotateZ(${initialZ}deg)`;
     card.style.animationDuration = `${duration}s`;
 });
+
+
+const entries = document.querySelectorAll('.timeline-entry');
+entries.forEach((entry, i) => {
+  if (i % 2 === 0) {
+    entry.classList.add('left');
+  } else {
+    entry.classList.add('right');
+  }
+});

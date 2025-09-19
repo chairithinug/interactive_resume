@@ -125,10 +125,7 @@
         </div>
     </header>
     <!-- Progress Bar Container -->
-    <div class="relative w-full max-w-full bg-gray-200 overflow-hidden">
-        <div id="progress-bar" class="absolute top-0 left-0 h-4 bg-blue-600 w-0"></div>
-    </div>
-
+    <div id="progress-bar"></div>
     <main class="relative max-w-4xl mx-auto px-6 py-8 text-gray-700 dark:text-gray-300">
         <div class="blobs-container pointer-events-none fixed inset-0 -z-10"></div>
 
@@ -138,7 +135,7 @@
             <section id="profile">
                 <h2 id="profile-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Profile Summary
                 </h2>
-                <p id="profile-summary" class="mt-2 text-gray-700">MSc Computer Science graduate from the University of
+                <p id="profile-summary" class="mt-2 text-gray-700 dark:text-gray-300">MSc Computer Science graduate from the University of
                     Copenhagen with
                     experience in data-driven software development, machine learning, and large-scale data processing.
                     Skilled in Python and core data science libraries, with projects spanning biometrics, media
@@ -297,22 +294,22 @@
                 <h2 id="timeline-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Timeline</h2>
 
                 <!-- Legend -->
-                <div class="mt-8 flex space-x-6">
+                <div class="mt-8 flex space-x-6 ">
                     <div class="flex items-center space-x-2">
                         <span class="w-4 h-4 bg-blue-600 rounded-full"></span>
-                        <span class="text-gray-700 text-sm">Full-time Work</span>
+                        <span class="text-gray-700 text-sm dark:text-gray-300">Full-time Work</span>
                     </div>
                     <div class="flex items-center space-x-2">
                         <span class="w-4 h-4 bg-orange-600 rounded-full"></span>
-                        <span class="text-gray-700 text-sm">Part-time Work</span>
+                        <span class="text-gray-700 text-sm dark:text-gray-300">Part-time Work</span>
                     </div>
                     <div class="flex items-center space-x-2">
                         <span class="w-4 h-4 bg-green-600 rounded-full"></span>
-                        <span class="text-gray-700 text-sm">Study</span>
+                        <span class="text-gray-700 text-sm dark:text-gray-300">Study</span>
                     </div>
                     <div class="flex items-center space-x-2">
                         <span class="w-4 h-4 bg-purple-600 rounded-full"></span>
-                        <span class="text-gray-700 text-sm">Volunteer</span>
+                        <span class="text-gray-700 text-sm dark:text-gray-300">Volunteer</span>
                     </div>
                 </div>
 
@@ -331,7 +328,7 @@
                     <div class="timeline-entry left" data-type="volunteer">
                         <div class="timeline-content left">
                             <h3>VP of Digital System – Thai Student and Alumni Association in Denmark (TSAAD)</h3>
-                            <p>Sep 2025 – Present</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2025 – Present</p>
                             <p>I became one of VPs ...</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -349,7 +346,7 @@
                     <div class="timeline-entry right" data-type="parttime">
                         <div class="timeline-content right">
                             <h3>Resident Assistant – Housing Foundation Copenhagen</h3>
-                            <p>Jul 2024 – Aug 2025</p>
+                            <p class="text-gray-500 dark:text-gray-400">Jul 2024 – Aug 2025</p>
                             <p>Go-to person at Bispebjerg Kollegiet</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -359,7 +356,7 @@
                     <div class="timeline-entry left" data-type="parttime">
                         <div class="timeline-content left">
                             <h3>Student Assistant - Det Kongelige Bibliotek</h3>
-                            <p>Jun 2024 – Jun 2025</p>
+                            <p class="text-gray-500 dark:text-gray-400">Jun 2024 – Jun 2025</p>
                             <p>Made sense of Danish heritage through TeraBytes of Radio and TV shows</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -377,7 +374,7 @@
                     <div class="timeline-entry right" data-type="volunteer">
                         <div class="timeline-content right">
                             <h3>Student Bar Volunteer – Studenterhuset</h3>
-                            <p>Sep 2023 – Oct 2024</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2023 – Oct 2024</p>
                             <p>Coffee crafted</p>
                             <p>Beer served</p>
                             <p>100% fun</p>
@@ -389,7 +386,7 @@
                     <div class="timeline-entry left" data-type="academic">
                         <div class="timeline-content left">
                             <h3>MSc Computer Science – University of Copenhagen</h3>
-                            <p>Sep 2023 – Jun 2025</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2023 – Jun 2025</p>
                             <p>Hungry for more ML knowledge</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -407,7 +404,7 @@
                     <div class="timeline-entry right" data-type="fulltime">
                         <div class="timeline-content right">
                             <h3>Research Engineer - Kasikorn Labs</h3>
-                            <p>Jun 2020 – Aug 2023</p>
+                            <p class="text-gray-500 dark:text-gray-400">Jun 2020 – Aug 2023</p>
                             <p>Landed on cool ML job</p>
                             <p>Interests piqued</p>
                         </div>
@@ -426,7 +423,7 @@
                     <div class="timeline-entry left" data-type="volunteer">
                         <div class="timeline-content left">
                             <h3>VP - IEEE-UW Madison Student Chapter</h3>
-                            <p>Sep 2019 – May 2020</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2019 – May 2020</p>
                             <p>Last two standing (P vs VP)</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -436,7 +433,7 @@
                     <div class="timeline-entry right" data-type="volunteer">
                         <div class="timeline-content right">
                             <h3>CS Tutor – University of Wisconsin-Madison (CSLC)</h3>
-                            <p>Sep 2019 – Jun 2019</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2019 – Jun 2019</p>
                             <p>Tutored grown-up kids in college</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -446,7 +443,7 @@
                     <div class="timeline-entry left" data-type="parttime">
                         <div class="timeline-content left">
                             <h3>Undergraduate Lab Assistant – University of Wisconsin-Madison</h3>
-                            <p>Sep 2019 – Dec 2019</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2019 – Dec 2019</p>
                             <p>Tried to help college kids build adult Lego</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -456,7 +453,7 @@
                     <div class="timeline-entry right" data-type="parttime">
                         <div class="timeline-content right">
                             <h3>API Developer Intern – RIS Company Limited</h3>
-                            <p>Jun 2019 – Jul 2019</p>
+                            <p class="text-gray-500 dark:text-gray-400">Jun 2019 – Jul 2019</p>
                             <p>Data in</p>
                             <p>Data matched</p>
                             <p>Data out</p>
@@ -468,7 +465,7 @@
                     <div class="timeline-entry left" data-type="volunteer">
                         <div class="timeline-content left">
                             <h3>Webmaster - Tau Beta Pi WI-A</h3>
-                            <p>Apr 2019 – May 2020</p>
+                            <p class="text-gray-500 dark:text-gray-400">Apr 2019 – May 2020</p>
                             <p>Kept the site updated</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -486,7 +483,7 @@
                     <div class="timeline-entry right" data-type="parttime">
                         <div class="timeline-content right">
                             <h3>Undergraduate Project Assistant – University of Wisconsin-Madison (WISEST)</h3>
-                            <p>May 2018 – Aug 2018</p>
+                            <p class="text-gray-500 dark:text-gray-400">May 2018 – Aug 2018</p>
                             <p>Circuit</p>
                             <p>Programming</p>
                             <p>...</p>
@@ -499,7 +496,7 @@
                     <div class="timeline-entry left" data-type="volunteer">
                         <div class="timeline-content left">
                             <h3>Project Officer - IEEE-UW Madison Student Chapter</h3>
-                            <p>Feb 2018 – May 2020</p>
+                            <p class="text-gray-500 dark:text-gray-400">Feb 2018 – May 2020</p>
                             <p>Built and shared cool custom-made stuff</p>
                         </div>
                         <div class="timeline-dot"></div>
@@ -517,7 +514,7 @@
                     <div class="timeline-entry right" data-type="academic">
                         <div class="timeline-content right">
                             <h3>BS Computer Engineering & Computer Sciences – University of Wisconsin-Madison</h3>
-                            <p>Sep 2016 – May 2020</p>
+                            <p class="text-gray-500 dark:text-gray-400">Sep 2016 – May 2020</p>
                             <p>In: Electrical Engineer</p>
                             <p>Out: Computer Engineer</p>
                         </div>
@@ -536,7 +533,7 @@
                     <div class="timeline-entry left" data-type="academic">
                         <div class="timeline-content left">
                             <h3>HS Student – Suankularb Wittayalai School</h3>
-                            <p>2012 – 2016</p>
+                            <p class="text-gray-500 dark:text-gray-400">2012 – 2016</p>
                             <p>2nd home</p>
                             <p>OSK 134</p>
                         </div>
