@@ -133,29 +133,11 @@ function progressBar() {
         return document.getElementById(id);
     });
 
-    // Scroll progress update
     window.addEventListener("scroll", () => {
         const scrollTop = window.scrollY;
         const docHeight = document.body.scrollHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + "%";
-
-        // Highlight the current section
-        let current = sections[0];
-        for (const sec of sections) {
-            if (sec.offsetTop <= scrollTop + window.innerHeight / 3) {
-                current = sec;
-            }
-        }
-        sectionLinks.forEach(link => {
-            const marker = link.querySelector("span.w-3");
-            marker.classList.remove("bg-blue-600");
-            marker.classList.add("bg-gray-600");
-            if (link.getAttribute("href").slice(1) === current.id) {
-                marker.classList.remove("bg-gray-600");
-                marker.classList.add("bg-blue-600");
-            }
-        });
+        document.getElementById("progress-bar").style.width = scrollPercent + "%";
     });
 
     // Smooth scroll on click

@@ -18,13 +18,13 @@ header#main-header {
 }
 
 #progress-bar {
-    position: fixed;      /* stick to viewport top */
-    top: 0;
+    position: fixed; /* stick to viewport */
+    top: env(safe-area-inset-top, 0);
     left: 0;
     height: 4px;
-    width: 0;             /* start at 0 */
     background-color: #2563eb;
-    z-index: 9999;
+    width: 0; /* will be updated by JS */
+    z-index: 60;
 }
 
 .blob {
