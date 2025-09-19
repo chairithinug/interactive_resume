@@ -290,9 +290,12 @@
                     alt="GitHub Stats" /> -->
             </section>
 
+
+
             <!-- Timeline -->
             <section id="timeline">
                 <h2 id="timeline-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Timeline</h2>
+
                 <!-- Legend -->
                 <div class="mt-8 flex space-x-6">
                     <div class="flex items-center space-x-2">
@@ -317,57 +320,53 @@
                     <!-- Vertical line -->
                     <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l border-gray-300"></div>
 
-                    <!-- Year Marker Now-->
+                    <!-- Current Date Marker -->
                     <div class="mb-12 flex justify-center relative">
                         <div id="current-date-marker"
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-start w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 pr-6 text-right">
-                            <h3 class="text-lg font-semibold text-orange-600">Resident Assistant – Housing Foundation
-                                Copenhagen</h3>
-                            <p class="text-sm text-gray-500">Jul 2024 – Aug 2025</p>
-                            <p class="text-gray-700">Worked while living in a student dormitory</p>
+                    <!-- Timeline Entries -->
+                    <div class="timeline-entry left" data-type="volunteer">
+                        <div class="timeline-content left">
+                            <h3>VP of Digital System – Thai Student and Alumni Association in Denmark (TSAAD)</h3>
+                            <p>Sep 2025 – Present</p>
+                            <p>I became one of VPs ...</p>
                         </div>
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-2 border-white transition">
-                            </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
+                    </div>
 
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
+                    <!-- Year Marker 2025 -->
+                    <div class="mb-12 flex justify-center relative">
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
+                            2025
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-end w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-2 border-white transition">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
+                    <div class="timeline-entry right" data-type="parttime">
+                        <div class="timeline-content right">
+                            <h3>Resident Assistant – Housing Foundation Copenhagen</h3>
+                            <p>Jul 2024 – Aug 2025</p>
+                            <p>Go-to person at Bispebjerg Kollegiet</p>
                         </div>
-                        <div class="w-1/2 pl-6 text-left">
-                            <h3 class="text-lg font-semibold text-orange-600 break-words">Student Assistant - Det
-                                Kongelige
-                                Bibliotek
-                            </h3>
-                            <p class="text-sm text-gray-500">Jun 2024 – Jun 2025</p>
-                            <p class="text-gray-700">Made sense of Danish heritage through TeraBytes of radio and tv
-                                shows</p>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
                     </div>
 
-                    <!-- Year Marker 2024-->
+                    <div class="timeline-entry left" data-type="parttime">
+                        <div class="timeline-content left">
+                            <h3>Student Assistant - Det Kongelige Bibliotek</h3>
+                            <p>Jun 2024 – Jun 2025</p>
+                            <p>Made sense of Danish heritage through TeraBytes of Radio and TV shows</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
+                    </div>
+
+                    <!-- Year Marker 2024 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -375,48 +374,29 @@
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-start w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 pr-6 text-right">
-                            <h3 class="text-lg font-semibold text-purple-600">Student Bar Volunteer – Studenterhuset
-                            </h3>
-                            <p class="text-sm text-gray-500">Sep 2023 – Oct 2024</p>
-                            <p class="text-gray-700">Coffee crafted. Beer served. Fun 100%</p>
+                    <div class="timeline-entry right" data-type="volunteer">
+                        <div class="timeline-content right">
+                            <h3>Student Bar Volunteer – Studenterhuset</h3>
+                            <p>Sep 2023 – Oct 2024</p>
+                            <p>Coffee crafted</p>
+                            <p>Beer served</p>
+                            <p>100% fun</p>
                         </div>
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-2 border-white transition">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
                     </div>
 
-                    <div class="mb-8 flex justify-end w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-green-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
+                    <div class="timeline-entry left" data-type="academic">
+                        <div class="timeline-content left">
+                            <h3>MSc Computer Science – University of Copenhagen</h3>
+                            <p>Sep 2023 – Jun 2025</p>
+                            <p>Hungry for more ML knowledge</p>
                         </div>
-                        <div class="w-1/2 pl-6 text-left">
-                            <h3 class="text-lg font-semibold text-green-600">MSc Computer Science – University of
-                                Copenhagen
-                            </h3>
-                            <p class="text-sm text-gray-500">Sep 2023 – Jun 2025</p>
-                            <p class="text-gray-700">Hungry for more AI / ML / DL knowledge and theory</p>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
                     </div>
 
-                    <!-- Year Marker 2023-->
+                    <!-- Year Marker 2023 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -424,26 +404,18 @@
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-start w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 pr-6 text-right">
-                            <h3 class="text-lg font-semibold text-blue-600">Research Engineer - Kasikorn Labs</h3>
-                            <p class="text-sm text-gray-500">Jun 2020 – Aug 2023</p>
-                            <p class="text-gray-700">Landed on cool ML job. Interests piqued</p>
+                    <div class="timeline-entry right" data-type="fulltime">
+                        <div class="timeline-content right">
+                            <h3>Research Engineer - Kasikorn Labs</h3>
+                            <p>Jun 2020 – Aug 2023</p>
+                            <p>Landed on cool ML job</p>
+                            <p>Interests piqued</p>
                         </div>
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
                     </div>
 
-                    <!-- Year Marker 2020-->
+                    <!-- Year Marker 2020 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -451,73 +423,59 @@
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-end w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
+                    <div class="timeline-entry left" data-type="volunteer">
+                        <div class="timeline-content left">
+                            <h3>VP - IEEE-UW Madison Student Chapter</h3>
+                            <p>Sep 2019 – May 2020</p>
+                            <p>Last two standing (P vs VP)</p>
                         </div>
-
-
-                        <div class="w-1/2 pl-6 text-left">
-                            <h3 class="text-lg font-semibold text-purple-600">CS Tutor – University of Wisconsin-Madison
-                                (CSLC)
-                            </h3>
-                            <p class="text-sm text-gray-500">Sep 2019 – Jun 2019</p>
-                            <p class="text-gray-700">Tutored grown-up kids in college</p>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
                     </div>
 
-                    <div class="mb-8 flex justify-start w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 pr-6 text-right">
-                            <h3 class="text-lg font-semibold text-orange-600">Undergraduate Lab Assistant – University
-                                of
-                                Wisconsin-Madison</h3>
-                            <p class="text-sm text-gray-500">Sep 2019 – Dec 2019</p>
-                            <p class="text-gray-700">Tried to help college kids build adult Lego</p>
+                    <div class="timeline-entry right" data-type="volunteer">
+                        <div class="timeline-content right">
+                            <h3>CS Tutor – University of Wisconsin-Madison (CSLC)</h3>
+                            <p>Sep 2019 – Jun 2019</p>
+                            <p>Tutored grown-up kids in college</p>
                         </div>
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
-                        </div>
-
-
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
                     </div>
 
-                    <div class="mb-8 flex justify-end w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
+                    <div class="timeline-entry left" data-type="parttime">
+                        <div class="timeline-content left">
+                            <h3>Undergraduate Lab Assistant – University of Wisconsin-Madison</h3>
+                            <p>Sep 2019 – Dec 2019</p>
+                            <p>Tried to help college kids build adult Lego</p>
                         </div>
-                        <div class="w-1/2 pl-6 text-left">
-                            <h3 class="text-lg font-semibold text-orange-600">API Developer Intern – RIS Company Limited
-                            </h3>
-                            <p class="text-sm text-gray-500">Jun 2019 – Jul 2019</p>
-                            <p class="text-gray-700">Data in. Data matched. Data out</p>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
                     </div>
 
-                    <!-- Year Marker 2019-->
+                    <div class="timeline-entry right" data-type="parttime">
+                        <div class="timeline-content right">
+                            <h3>API Developer Intern – RIS Company Limited</h3>
+                            <p>Jun 2019 – Jul 2019</p>
+                            <p>Data in</p>
+                            <p>Data matched</p>
+                            <p>Data out</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
+                    </div>
+
+                    <div class="timeline-entry left" data-type="volunteer">
+                        <div class="timeline-content left">
+                            <h3>Webmaster - Tau Beta Pi WI-A</h3>
+                            <p>Apr 2019 – May 2020</p>
+                            <p>Kept the site updated</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
+                    </div>
+
+                    <!-- Year Marker 2019 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -525,28 +483,30 @@
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-start w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 pr-6 text-right">
-                            <h3 class="text-lg font-semibold text-orange-600">Undergraduate Project Assistant –
-                                University of
-                                Wisconsin-Madison (WISEST)</h3>
-                            <p class="text-sm text-gray-500">May 2018 – Aug 2018</p>
-                            <p class="text-gray-700">Circuit, programming, and ... cow's ear</p>
+                    <div class="timeline-entry right" data-type="parttime">
+                        <div class="timeline-content right">
+                            <h3>Undergraduate Project Assistant – University of Wisconsin-Madison (WISEST)</h3>
+                            <p>May 2018 – Aug 2018</p>
+                            <p>Circuit</p>
+                            <p>Programming</p>
+                            <p>...</p>
+                            <p>A cow's ear</p>
                         </div>
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
                     </div>
 
-                    <!-- Year Marker 2018-->
+                    <div class="timeline-entry left" data-type="volunteer">
+                        <div class="timeline-content left">
+                            <h3>Project Officer - IEEE-UW Madison Student Chapter</h3>
+                            <p>Feb 2018 – May 2020</p>
+                            <p>Built and shared cool custom-made stuff</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
+                    </div>
+
+                    <!-- Year Marker 2018 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -554,32 +514,18 @@
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-end w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute right-0 top-2 transform translate-x-1/2 w-4 h-4 bg-green-600 rounded-full border-2 border-white">
-                            </div>
+                    <div class="timeline-entry right" data-type="academic">
+                        <div class="timeline-content right">
+                            <h3>BS Computer Engineering & Computer Sciences – University of Wisconsin-Madison</h3>
+                            <p>Sep 2016 – May 2020</p>
+                            <p>In: Electrical Engineer</p>
+                            <p>Out: Computer Engineer</p>
                         </div>
-
-                        <!-- Popup -->
-                        <div
-                            class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                            TODO
-                        </div>
-                        <div class="w-1/2 pl-6 text-left">
-                            <h3 class="text-lg font-semibold text-green-600">BS Computer Engineering & Computer Sciences
-                                – University of
-                                Wisconsin-Madison
-                            </h3>
-                            <p class="text-sm text-gray-500">Sep 2016 – May 2020</p>
-                            <p class="text-gray-700">Came in as electrical engineer. Got out as computer engineer /
-                                scientist</p>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left"></div>
                     </div>
 
-
-
-                    <!-- Year Marker 2016-->
+                    <!-- Year Marker 2016 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -587,27 +533,18 @@
                         </div>
                     </div>
 
-                    <div class="mb-8 flex justify-start w-full group relative timeline-entry cursor-pointer">
-                        <div class="w-1/2 pr-6 text-right">
-                            <h3 class="text-lg font-semibold text-green-600">HS Student – Suankularb Wittayalai School
-                            </h3>
-                            <p class="text-sm text-gray-500">2012 – 2016</p>
-                            <p class="text-gray-700">Second home. Forever grateful. OSK 134</p>
+                    <div class="timeline-entry left" data-type="academic">
+                        <div class="timeline-content left">
+                            <h3>HS Student – Suankularb Wittayalai School</h3>
+                            <p>2012 – 2016</p>
+                            <p>2nd home</p>
+                            <p>OSK 134</p>
                         </div>
-                        <div class="w-1/2 relative">
-                            <div
-                                class="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-green-600 rounded-full border-2 border-white">
-                            </div>
-
-                            <!-- Popup -->
-                            <div
-                                class="absolute left-6 top-0 w-60 p-3 bg-white rounded-lg shadow-lg text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition timeline-popup pointer-events-none">
-                                TODO
-                            </div>
-                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right"></div>
                     </div>
 
-                    <!-- Year Marker 2012-->
+                    <!-- Year Marker 2012 -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
@@ -615,7 +552,7 @@
                         </div>
                     </div>
 
-                    <!-- Year Marker Past-->
+                    <!-- Final Marker -->
                     <div class="mb-12 flex justify-center relative">
                         <div
                             class="absolute left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full">
