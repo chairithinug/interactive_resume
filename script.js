@@ -407,29 +407,29 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
     // alert('You have rejected analytics cookies. No data will be collected.');
 });
 
-let lastScrollTop = 0;
-let headerHidden = false;
-const header = document.getElementById('main-header');
-const delta = 5;
-const scrollUpTolerance = 50;
+// let lastScrollTop = 0;
+// let headerHidden = false;
+// const header = document.getElementById('main-header');
+// const delta = 5;
+// const scrollUpTolerance = 50;
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// window.addEventListener('scroll', () => {
+//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
+//     if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
 
-    if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-        // Scroll down → hide
-        header.style.top = `-${header.offsetHeight}px`;
-        headerHidden = true;
-    } else if (headerHidden && scrollTop < lastScrollTop - scrollUpTolerance) {
-        // Scroll up → show
-        header.style.top = '0';
-        headerHidden = false;
-    }
+//     if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+//         // Scroll down → hide
+//         header.style.top = `-${header.offsetHeight}px`;
+//         headerHidden = true;
+//     } else if (headerHidden && scrollTop < lastScrollTop - scrollUpTolerance) {
+//         // Scroll up → show
+//         header.style.top = '0';
+//         headerHidden = false;
+//     }
 
-    lastScrollTop = scrollTop;
-});
+//     lastScrollTop = scrollTop;
+// });
 
 document.querySelectorAll('.flip-card').forEach(card => {
     const duration = 5 + Math.random() * 4; // 5s - 9s
