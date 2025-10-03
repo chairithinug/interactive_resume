@@ -42,7 +42,7 @@
         default-src 'self';
         script-src 'self' https://www.googletagmanager.com;
         style-src 'self';
-        img-src 'self' https://cdn-icons-png.flaticon.com https://upload.wikimedia.org https://cdn.jsdelivr.net data:;
+        img-src 'self' https://cdn-icons-png.flaticon.com data:;
         connect-src 'self' https://api.open-meteo.com;
         font-src 'self' https://cdn.jsdelivr.net;
         object-src 'none';
@@ -80,8 +80,7 @@
 </head>
 
 <body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors duration-300 overflow-x-hidden w-full max-w-full"
-    style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors duration-300 overflow-x-hidden w-full max-w-full">
     <!-- Header -->
     <header id="main-header" class="bg-white dark:bg-gray-900 shadow sticky top-0 z-50 transition-all duration-300">
         <div class="max-w-4xl mx-auto px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
@@ -100,9 +99,9 @@
                         class="text-blue-600 hover:underline">LinkedIn</a></p>
                 <p>🔗 <a href="https://www.strava.com/athletes/137178417" target="_blank"
                         class="text-orange-600 hover:underline">Strava</a></p>
-                <p>📄 <a href="Anapat_Chairithinugull_Resume_polished.pdf" target="_blank"
+                <p>📄 <a href="pdf/Anapat_Chairithinugull_Resume_polished.pdf" target="_blank"
                         class="text-green-600 hover:underline">Resume</a></p>
-                <p>🤖 <a href="ATS_friendly_Anapat_Chairithinugull.pdf" target="_blank"
+                <p>🤖 <a href="pdf/ATS_friendly_Anapat_Chairithinugull.pdf" target="_blank"
                         class="text-purple-600 hover:underline">ATS Friendly Resume</a></p>
             </div>
             <!-- Weather & Controls -->
@@ -185,31 +184,31 @@
                     <div class="flex flex-wrap gap-4 items-center">
                         <!-- Python -->
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                            <img src="icons/python.svg"
                                 class="w-12 h-12" alt="Python">
                             <span class="text-sm">Python</span>
                         </div>
                         <!-- Java -->
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                            <img src="icons/java.svg"
                                 class="w-12 h-12" alt="Java">
                             <span class="text-sm">Java</span>
                         </div>
                         <!-- C -->
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+                            <img src="icons/c.svg"
                                 class="w-12 h-12" alt="C Logo">
                             <span class="text-sm mt-1">C</span>
                         </div>
                         <!-- C++ -->
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                            <img src="icons/cplusplus.svg"
                                 class="w-12 h-12" alt="C++">
                             <span class="text-sm">C++</span>
                         </div>
                         <!-- C# -->
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                            <img src="icons/csharp.svg"
                                 class="w-12 h-12" alt="C# Logo">
                             <span class="text-sm mt-1">C#/.NET</span>
                         </div>
@@ -221,7 +220,7 @@
                     </div> -->
                         <!-- SQL -->
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                            <img src="icons/mysql.svg"
                                 class="w-12 h-12" alt="MySQL">
                             <span class="text-sm">MySQL</span>
                         </div>
@@ -233,51 +232,51 @@
                     <h3 class="font-semibold mb-2">Tools & Frameworks</h3>
                     <div class="flex flex-wrap gap-4 items-center">
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                            <img src="icons/tensorflow.svg"
                                 class="w-12 h-12" alt="TensorFlow">
                             <span class="text-sm">TensorFlow</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                            <img src="icons/pytorch.svg"
                                 class="w-12 h-12" alt="PyTorch">
                             <span class="text-sm">PyTorch</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                            <img src="icons/git.svg"
                                 class="w-12 h-12" alt="Git">
                             <span class="text-sm">Git</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg"
+                            <img src="icons/matlab.svg"
                                 class="w-12 h-12" alt="MATLAB">
                             <span class="text-sm">MATLAB</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                            <img src="icons/pandas.svg"
                                 class="w-12 h-12" alt="Pandas">
                             <span class="text-sm">Pandas</span>
                         </div>
                         <!-- OpenCV -->
                         <div class="flex flex-col items-center">
-                            <img src="https://opencv.org/wp-content/uploads/2020/07/OpenCV_logo_no_text-1.svg"
+                            <img src="icons/opencv.svg"
                                 class="w-12 h-12" alt="OpenCV Logo">
                             <span class="text-sm mt-1">OpenCV</span>
                         </div>
                         <!-- Scikit-Learn -->
                         <div class="flex flex-col items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
+                            <img src="icons/scikit-learn.svg"
                                 class="w-12 h-12" alt="Scikit-Learn Logo">
                             <span class="text-sm mt-1">Scikit-Learn</span>
                         </div>
                         <!-- Agile -->
                         <div class="flex flex-col items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Atlassian-logo.svg"
+                            <img src="icons/agile.svg"
                                 class="w-12 h-12" alt="Agile Logo">
                             <span class="text-sm mt-1">Agile</span>
                         </div>
                         <!-- Microsoft Office -->
                         <div class="flex flex-col items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Microsoft_Office_logo_%282013–2019%29.svg"
+                            <img src="icons/microsoft-office.svg"
                                 class="w-12 h-12" alt="Microsoft Office Logo">
                             <span class="text-sm mt-1">MS Office</span>
                         </div>
@@ -294,17 +293,17 @@
                     <h3 class="font-semibold mb-2">Operating Systems</h3>
                     <div class="flex flex-wrap gap-4 items-center">
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
+                            <img src="icons/windows.svg"
                                 class="w-12 h-12" alt="Windows">
                             <span class="text-sm">Windows</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+                            <img src="icons/macos.svg"
                                 class="w-12 h-12" alt="macOS">
                             <span class="text-sm">macOS</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                            <img src="icons/linux.svg"
                                 class="w-12 h-12" alt="Linux">
                             <span class="text-sm">Linux</span>
                         </div>
