@@ -4,10 +4,10 @@ const random = (min, max) => Math.random() * (max - min) + min;
 // ---------- Blob Background ----------
 function blobBackground() {
     const colors = [
-        "#FBB6CE","#BFDBFE","#C6F6D5","#FEF08A","#D8B4FE",
-        "#F87171","#34D399","#60A5FA","#FCD34D","#A78BFA",
-        "#F472B6","#22D3EE","#4ADE80","#FACC15","#C084FC",
-        "#F59E0B","#EC4899","#3B82F6","#10B981","#EAB308"
+        "#FBB6CE", "#BFDBFE", "#C6F6D5", "#FEF08A", "#D8B4FE",
+        "#F87171", "#34D399", "#60A5FA", "#FCD34D", "#A78BFA",
+        "#F472B6", "#22D3EE", "#4ADE80", "#FACC15", "#C084FC",
+        "#F59E0B", "#EC4899", "#3B82F6", "#10B981", "#EAB308"
     ];
 
     const container = document.createElement("div");
@@ -275,7 +275,7 @@ function loadAnalytics() {
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-FJQNSE4GQC', { 'anonymize_ip': true });
     trackLinks();
@@ -339,6 +339,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Service Worker registration
     if ('serviceWorker' in navigator) {
+        let swUrl = '/service-worker.js';
+
+        // If Trusted Types is enabled, create a policy for script URLs
+        if (window.trustedTypes) {
+            const policy = trustedTypes.createPolicy('default', {
+                createScriptURL: (url) => url
+            });
+            swUrl = policy.createScriptURL(swUrl);
+        }
         navigator.serviceWorker.register('/service-worker.js')
             .then(reg => console.log('Service Worker registered with scope:', reg.scope))
             .catch(err => console.error('Service Worker registration failed:', err));
