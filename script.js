@@ -389,30 +389,6 @@ document.getElementById("reject-cookies").addEventListener("click", () => {
     // alert('You have rejected analytics cookies. No data will be collected.');
 });
 
-// let lastScrollTop = 0;
-// let headerHidden = false;
-// const header = document.getElementById('main-header');
-// const delta = 5;
-// const scrollUpTolerance = 50;
-
-// window.addEventListener('scroll', () => {
-//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-//     if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
-
-//     if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-//         // Scroll down → hide
-//         header.style.top = `-${header.offsetHeight}px`;
-//         headerHidden = true;
-//     } else if (headerHidden && scrollTop < lastScrollTop - scrollUpTolerance) {
-//         // Scroll up → show
-//         header.style.top = '0';
-//         headerHidden = false;
-//     }
-
-//     lastScrollTop = scrollTop;
-// });
-
 document.querySelectorAll('.flip-card').forEach(card => {
     const duration = 5 + Math.random() * 4; // 5s - 9s
     const initialZ = (Math.random() - 0.5) * 4; // -2deg to 2deg
@@ -428,6 +404,23 @@ entries.forEach((entry, i) => {
     } else {
         entry.classList.add('right');
     }
+});
+
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+        });
+}
+
+document.querySelectorAll(".flip-card").forEach(card => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
 });
 
 
@@ -464,110 +457,100 @@ entries.forEach((entry, i) => {
 
 // document.addEventListener("DOMContentLoaded", setupSvgMap);
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-        .then((registration) => {
-            console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch((error) => {
-            console.error('Service Worker registration failed:', error);
-        });
-}
+// function photoCarousel() {
+//     const photoCarousel = document.getElementById('photo-carousel');
+//     const leftPhoto = document.getElementById('left-photo');
+//     const rightPhoto = document.getElementById('right-photo');
 
-function photoCarousel() {
-    const photoCarousel = document.getElementById('photo-carousel');
-    const leftPhoto = document.getElementById('left-photo');
-    const rightPhoto = document.getElementById('right-photo');
+//     leftPhoto.addEventListener('click', () =>
+//         photoCarousel.scrollBy({ left: -300, behavior: 'smooth' }));
+//     rightPhoto.addEventListener('click', () =>
+//         photoCarousel.scrollBy({ left: 300, behavior: 'smooth' }));
 
-    leftPhoto.addEventListener('click', () =>
-        photoCarousel.scrollBy({ left: -300, behavior: 'smooth' }));
-    rightPhoto.addEventListener('click', () =>
-        photoCarousel.scrollBy({ left: 300, behavior: 'smooth' }));
+//     let isDown = false;
+//     let startX, scrollLeft;
+//     photoCarousel.addEventListener('mousedown', e => {
+//         isDown = true;
+//         startX = e.pageX - photoCarousel.offsetLeft;
+//         scrollLeft = photoCarousel.scrollLeft;
+//     });
+//     photoCarousel.addEventListener('mouseleave', () => isDown = false);
+//     photoCarousel.addEventListener('mouseup', () => isDown = false);
+//     photoCarousel.addEventListener('mousemove', e => {
+//         if (!isDown) return;
+//         e.preventDefault();
+//         const x = e.pageX - photoCarousel.offsetLeft;
+//         const walk = (x - startX) * 2;
+//         photoCarousel.scrollLeft = scrollLeft - walk;
+//     });
+// }
 
-    let isDown = false;
-    let startX, scrollLeft;
-    photoCarousel.addEventListener('mousedown', e => {
-        isDown = true;
-        startX = e.pageX - photoCarousel.offsetLeft;
-        scrollLeft = photoCarousel.scrollLeft;
-    });
-    photoCarousel.addEventListener('mouseleave', () => isDown = false);
-    photoCarousel.addEventListener('mouseup', () => isDown = false);
-    photoCarousel.addEventListener('mousemove', e => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - photoCarousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        photoCarousel.scrollLeft = scrollLeft - walk;
-    });
-}
+// function photoLightbox() {
+//     const lightbox = document.getElementById('lightbox');
+//     const lightboxImg = document.getElementById('lightbox-img');
+//     const lightboxClose = document.getElementById('lightbox-close');
 
-function photoLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.getElementById('lightbox-close');
+//     // Find all gallery images
+//     document.querySelectorAll('#photo-carousel img').forEach(img => {
+//         img.addEventListener('click', () => {
+//             lightboxImg.src = img.src;     // show the clicked image
+//             lightbox.classList.remove('hidden');
+//             lightbox.classList.add('flex'); // flex for centering
+//         });
+//     });
 
-    // Find all gallery images
-    document.querySelectorAll('#photo-carousel img').forEach(img => {
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;     // show the clicked image
-            lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex'); // flex for centering
-        });
-    });
+//     // Close lightbox
+//     lightboxClose.addEventListener('click', () => {
+//         lightbox.classList.remove('flex');
+//         lightbox.classList.add('hidden');
+//     });
 
-    // Close lightbox
-    lightboxClose.addEventListener('click', () => {
-        lightbox.classList.remove('flex');
-        lightbox.classList.add('hidden');
-    });
+//     // Close when clicking outside the image
+//     lightbox.addEventListener('click', e => {
+//         if (e.target === lightbox) {
+//             lightbox.classList.remove('flex');
+//             lightbox.classList.add('hidden');
+//         }
+//     });
+// }
 
-    // Close when clicking outside the image
-    lightbox.addEventListener('click', e => {
-        if (e.target === lightbox) {
-            lightbox.classList.remove('flex');
-            lightbox.classList.add('hidden');
-        }
-    });
-}
+// function initPhotoMap() {
+//     // Create the map
+//     const map = L.map('map').setView([20, 0], 2); // Center on world
 
-function initPhotoMap() {
-    // Create the map
-    const map = L.map('map').setView([20, 0], 2); // Center on world
+//     // Add tile layer
+//     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//         attribution: '© OpenStreetMap contributors'
+//     }).addTo(map);
 
-    // Add tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+//     // Example markers with photos
+//     const places = [
+//         {
+//             coords: [13.7563, 100.5018], // Bangkok
+//             title: "Bangkok, Thailand",
+//             img: "images/bangkok.jpg"
+//         },
+//         {
+//             coords: [55.6761, 12.5683], // Copenhagen
+//             title: "Copenhagen, Denmark",
+//             img: "images/copenhagen.jpg"
+//         },
+//         {
+//             coords: [40.7128, -74.0060], // New York
+//             title: "New York, USA",
+//             img: "images/nyc.jpg"
+//         }
+//     ];
 
-    // Example markers with photos
-    const places = [
-        {
-            coords: [13.7563, 100.5018], // Bangkok
-            title: "Bangkok, Thailand",
-            img: "images/bangkok.jpg"
-        },
-        {
-            coords: [55.6761, 12.5683], // Copenhagen
-            title: "Copenhagen, Denmark",
-            img: "images/copenhagen.jpg"
-        },
-        {
-            coords: [40.7128, -74.0060], // New York
-            title: "New York, USA",
-            img: "images/nyc.jpg"
-        }
-    ];
-
-    // Add markers
-    places.forEach(p => {
-        const marker = L.marker(p.coords).addTo(map);
-        marker.bindPopup(`
-      <h3 class="font-bold">${p.title}</h3>
-      <img src="${p.img}" alt="${p.title}" style="width:200px; margin-top:5px; border-radius:8px;">
-    `);
-    });
-}
+//     // Add markers
+//     places.forEach(p => {
+//         const marker = L.marker(p.coords).addTo(map);
+//         marker.bindPopup(`
+//       <h3 class="font-bold">${p.title}</h3>
+//       <img src="${p.img}" alt="${p.title}" style="width:200px; margin-top:5px; border-radius:8px;">
+//     `);
+//     });
+// }
 
 // document.addEventListener("DOMContentLoaded", () => {
 //     initPhotoMap();
