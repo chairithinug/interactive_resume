@@ -371,3 +371,12 @@ header#main-header {
 .timeline-dot {
     border-color: white;           /* stays visible in both modes */
 }
+
+#world-map path {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+#world-map path:hover {
+  fill: #f59e0b; /* amber highlight on hover */
+}
