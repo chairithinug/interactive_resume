@@ -3,41 +3,24 @@
 
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+
     <title>Anapat Chairithinugull – Resume</title>
 
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
+    <!-- Critical CSS first (preload + fallback) -->
+    <link rel="preload" href="/styles.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/styles.css">
+    </noscript>
 
-    <meta name="description"
-        content="Portfolio and resume of Anapat Chairithinugull. Experience in software engineering, data science, AI, and machine learning.">
-    <meta name="keywords" content="Data Scientist, Software Engineer, Python, C#, AI, Machine Learning, Portfolio">
-    <meta name="author" content="Anapat Chairithinugull">
-
-    <!-- Favicon (small tab icon) -->
+    <!-- Favicons / PWA manifest -->
     <link rel="icon" href="icons/favicon.png" type="image/png">
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Anapat Chairithinugull – Portfolio">
-    <meta property="og:description" content="Interactive resume and projects of Anapat Chairithinugull">
-    <meta property="og:image" content="icons/favicon.png">
-    <meta property="og:type" content="website">
-
-    <!-- Key points:
-	•	Place them before your scripts to ensure social platforms pick them up when crawling.
-	•	Replace URL_TO_PREVIEW_IMAGE with an actual image URL (preferably 1200×630 px).
-	•	Open Graph works for Facebook, LinkedIn, Discord, etc., while Twitter tags are specific to Twitter previews.-->
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Anapat Chairithinugull – Portfolio">
-    <meta name="twitter:description" content="Interactive resume and projects of Anapat Chairithinugull">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
 
+    <!-- Security / Policy headers -->
     <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
@@ -51,52 +34,48 @@
         frame-src 'none';
         require-trusted-types-for 'script';
     ">
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Optional structured data -->
     <script type="application/ld+json">
-            {
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Anapat Chairithinugull",
-              "jobTitle": "Data Scientist & Software Engineer",
-              "url": "https://chairithinug.github.io/",
-              "sameAs": [
-                "https://www.linkedin.com/in/anapat-chairithinugull",
-                "https://github.com/chairithinug",
-                "https://www.strava.com/athletes/137178417"
-              ],
-              "alumniOf": "University of Copenhagen",
-              "skills": [
-                    "Python",
-                    "Java",
-                    "C",
-                    "C++",
-                    "C#",
-                    "MySQL",
-                    "MATLAB",
-                    "Git",
-                    "TensorFlow",
-                    "PyTorch",
-                    "Pandas",
-                    "OpenCV",
-                    "Scikit-Learn",
-                    "Agile",
-                    "Microsoft Office",
-                    "Linux",
-                    "macOS",
-                    "Windows",
-                    "HTML",
-                    "CSS",
-                    "JavaScript",
-                    "SQL",
-                    "Data Science",
-                    "Machine Learning",
-                    "Deep Learning",
-                    "Software Development",
-                    "AI"
-                ],
-              "description": "MSc Computer Science graduate from the University of Copenhagen with experience in data-driven software development, machine learning, and large-scale data processing. Skilled in Python and core data science libraries, with projects spanning biometrics, media archives, and computational modeling. I have a strong foundation in statistical analysis, algorithm development, and handling diverse data sources. Comfortable working independently and in cross-functional teams, I am eager to contribute to building data-driven products with real-world impact."
-            }
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anapat Chairithinugull",
+      "jobTitle": "Data Scientist & Software Engineer",
+      "url": "https://chairithinug.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/anapat-chairithinugull",
+        "https://github.com/chairithinug",
+        "https://www.strava.com/athletes/137178417"
+      ],
+      "alumniOf": "University of Copenhagen",
+      "skills": [
+            "Python","Java","C","C++","C#","MySQL","MATLAB","Git","TensorFlow","PyTorch",
+            "Pandas","OpenCV","Scikit-Learn","Agile","Microsoft Office","Linux","macOS",
+            "Windows","HTML","CSS","JavaScript","SQL","Data Science","Machine Learning",
+            "Deep Learning","Software Development","AI"
+        ],
+      "description": "MSc Computer Science graduate from the University of Copenhagen with experience in data-driven software development, machine learning, and large-scale data processing. Skilled in Python and core data science libraries, with projects spanning biometrics, media archives, and computational modeling. I have a strong foundation in statistical analysis, algorithm development, and handling diverse data sources. Comfortable working independently and in cross-functional teams, I am eager to contribute to building data-driven products with real-world impact."
+    }
     </script>
+
+    <!-- Metadata / SEO / Social (non-critical, load last) -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="description"
+        content="Portfolio and resume of Anapat Chairithinugull. Experience in software engineering, data science, AI, and machine learning.">
+    <meta name="keywords" content="Data Scientist, Software Engineer, Python, C#, AI, Machine Learning, Portfolio">
+    <meta name="author" content="Anapat Chairithinugull">
+
+    <meta property="og:title" content="Anapat Chairithinugull – Portfolio">
+    <meta property="og:description" content="Interactive resume and projects of Anapat Chairithinugull">
+    <meta property="og:image" content="icons/favicon.png">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Anapat Chairithinugull – Portfolio">
+    <meta name="twitter:description" content="Interactive resume and projects of Anapat Chairithinugull">
+
 </head>
 
 <body
@@ -204,32 +183,27 @@
                     <div class="flex flex-wrap gap-4 items-center">
                         <!-- Python -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/python.svg"
-                                class="w-12 h-12" alt="Python">
+                            <img src="icons/python.svg" class="w-12 h-12" alt="Python">
                             <span class="text-sm">Python</span>
                         </div>
                         <!-- Java -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/java.svg"
-                                class="w-12 h-12" alt="Java">
+                            <img src="icons/java.svg" class="w-12 h-12" alt="Java">
                             <span class="text-sm">Java</span>
                         </div>
                         <!-- C -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/c.svg"
-                                class="w-12 h-12" alt="C Logo">
+                            <img src="icons/c.svg" class="w-12 h-12" alt="C Logo">
                             <span class="text-sm mt-1">C</span>
                         </div>
                         <!-- C++ -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/cplusplus.svg"
-                                class="w-12 h-12" alt="C++">
+                            <img src="icons/cplusplus.svg" class="w-12 h-12" alt="C++">
                             <span class="text-sm">C++</span>
                         </div>
                         <!-- C# -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/csharp.svg"
-                                class="w-12 h-12" alt="C# Logo">
+                            <img src="icons/csharp.svg" class="w-12 h-12" alt="C# Logo">
                             <span class="text-sm mt-1">C#/.NET</span>
                         </div>
                         <!-- .NET -->
@@ -240,8 +214,7 @@
                     </div> -->
                         <!-- SQL -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/mysql.svg"
-                                class="w-12 h-12" alt="MySQL">
+                            <img src="icons/mysql.svg" class="w-12 h-12" alt="MySQL">
                             <span class="text-sm">MySQL</span>
                         </div>
                     </div>
@@ -252,52 +225,43 @@
                     <h3 class="font-semibold mb-2">Tools & Frameworks</h3>
                     <div class="flex flex-wrap gap-4 items-center">
                         <div class="flex flex-col items-center">
-                            <img src="icons/tensorflow.svg"
-                                class="w-12 h-12" alt="TensorFlow">
+                            <img src="icons/tensorflow.svg" class="w-12 h-12" alt="TensorFlow">
                             <span class="text-sm">TensorFlow</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="icons/pytorch.svg"
-                                class="w-12 h-12" alt="PyTorch">
+                            <img src="icons/pytorch.svg" class="w-12 h-12" alt="PyTorch">
                             <span class="text-sm">PyTorch</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="icons/git.svg"
-                                class="w-12 h-12" alt="Git">
+                            <img src="icons/git.svg" class="w-12 h-12" alt="Git">
                             <span class="text-sm">Git</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="icons/matlab.svg"
-                                class="w-12 h-12" alt="MATLAB">
+                            <img src="icons/matlab.svg" class="w-12 h-12" alt="MATLAB">
                             <span class="text-sm">MATLAB</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="icons/pandas.svg"
-                                class="w-12 h-12" alt="Pandas">
+                            <img src="icons/pandas.svg" class="w-12 h-12" alt="Pandas">
                             <span class="text-sm">Pandas</span>
                         </div>
                         <!-- OpenCV -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/opencv.svg"
-                                class="w-12 h-12" alt="OpenCV Logo">
+                            <img src="icons/opencv.svg" class="w-12 h-12" alt="OpenCV Logo">
                             <span class="text-sm mt-1">OpenCV</span>
                         </div>
                         <!-- Scikit-Learn -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/scikit-learn.svg"
-                                class="w-12 h-12" alt="Scikit-Learn Logo">
+                            <img src="icons/scikit-learn.svg" class="w-12 h-12" alt="Scikit-Learn Logo">
                             <span class="text-sm mt-1">Scikit-Learn</span>
                         </div>
                         <!-- Agile -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/agile.svg"
-                                class="w-12 h-12" alt="Agile Logo">
+                            <img src="icons/agile.svg" class="w-12 h-12" alt="Agile Logo">
                             <span class="text-sm mt-1">Agile</span>
                         </div>
                         <!-- Microsoft Office -->
                         <div class="flex flex-col items-center">
-                            <img src="icons/microsoft-office.svg"
-                                class="w-12 h-12" alt="Microsoft Office Logo">
+                            <img src="icons/microsoft-office.svg" class="w-12 h-12" alt="Microsoft Office Logo">
                             <span class="text-sm mt-1">MS Office</span>
                         </div>
                         <!-- <div class="flex flex-col items-center">
@@ -313,18 +277,15 @@
                     <h3 class="font-semibold mb-2">Operating Systems</h3>
                     <div class="flex flex-wrap gap-4 items-center">
                         <div class="flex flex-col items-center">
-                            <img src="icons/windows.svg"
-                                class="w-12 h-12" alt="Windows">
+                            <img src="icons/windows.svg" class="w-12 h-12" alt="Windows">
                             <span class="text-sm">Windows</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="icons/macos.svg"
-                                class="w-12 h-12" alt="macOS">
+                            <img src="icons/macos.svg" class="w-12 h-12" alt="macOS">
                             <span class="text-sm">macOS</span>
                         </div>
                         <div class="flex flex-col items-center">
-                            <img src="icons/linux.svg"
-                                class="w-12 h-12" alt="Linux">
+                            <img src="icons/linux.svg" class="w-12 h-12" alt="Linux">
                             <span class="text-sm">Linux</span>
                         </div>
                     </div>
