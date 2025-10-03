@@ -169,6 +169,17 @@ function setupCarousel(carouselId, leftBtnId, rightBtnId, scrollAmount) {
         const walk = (e.pageX - startX) * 2;
         carousel.scrollLeft = scrollLeft - walk;
     });
+
+    carousel.addEventListener('keydown', e => {
+        const scrollAmount = 100; // pixels per key press
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+    });
 }
 
 // ---------- Weather ----------
