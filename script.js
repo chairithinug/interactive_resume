@@ -339,7 +339,9 @@ function trackLinks() {
 
 // ---------- Initialize Everything ----------
 document.addEventListener("DOMContentLoaded", () => {
-    requestIdleCallback(() => {
+
+    const ric = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1); };
+    ric(() => {
         blobBackground();
         setupFlipCards();
         setupTimelineEntries();
@@ -361,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => loadLanguage(btn.dataset.lang))
     );
 
-    requestIdleCallback(() => {
+    ric(() => {
         // Service Worker registration
         if ('serviceWorker' in navigator) {
             let swUrl = '/service-worker.js';
@@ -378,6 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch(err => console.error('Service Worker registration failed:', err));
         }
     });
+
 });
 
 // const toggleBtn = document.getElementById('sidebar-toggle');
