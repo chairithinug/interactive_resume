@@ -278,7 +278,7 @@ function loadAnalytics() {
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-FJQNSE4GQC', { 'anonymize_ip': true });
-    gtag('event', 'click', { event_category: 'Button', event_label: 'Download Resume' });
+    trackLinks();
 }
 
 // ---------- Timeline Entry Flip & Hover ----------
@@ -286,25 +286,32 @@ function setupTimelineEntries() {
     const entries = document.querySelectorAll('.timeline-entry');
     entries.forEach((entry, i) => {
         entry.classList.add(i % 2 === 0 ? 'left' : 'right');
-        const popup = entry.querySelector(".timeline-popup");
 
         // Optional hover effect
         entry.addEventListener("mouseenter", () => entry.classList.add("scale-110"));
         entry.addEventListener("mouseleave", () => entry.classList.remove("scale-110"));
+    });
+}
 
-        // Click toggle popup
-        if (popup) {
-            entry.addEventListener("click", () => {
-                const visible = popup.classList.contains("opacity-100");
-                if (visible) {
-                    popup.classList.remove("opacity-100");
-                    popup.classList.add("opacity-0", "pointer-events-none");
-                } else {
-                    popup.classList.remove("opacity-0", "pointer-events-none");
-                    popup.classList.add("opacity-100");
-                }
+// Only call this after user accepts cookies
+function trackLinks() {
+    const links = [
+        { selector: 'a[href*="linkedin.com"]', label: "LinkedIn" },
+        { selector: 'a[href*="strava.com"]', label: "Strava" },
+        { selector: 'a[href*="Anapat_Chairithinugull_Resume_polished.pdf"]', label: "Resume" },
+        { selector: 'a[href*="ATS_friendly_Anapat_Chairithinugull.pdf"]', label: "ATS Friendly Resume" }
+    ];
+
+    links.forEach(link => {
+        const element = document.querySelector(link.selector);
+        if (!element) return;
+
+        element.addEventListener("click", () => {
+            gtag('event', 'click', {
+                event_category: 'Link',
+                event_label: link.label
             });
-        }
+        });
     });
 }
 
