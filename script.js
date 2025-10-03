@@ -317,18 +317,20 @@ function trackLinks() {
 
 // ---------- Initialize Everything ----------
 document.addEventListener("DOMContentLoaded", () => {
+    requestIdleCallback(() => {
+        blobBackground();
+        setupFlipCards();
+        setupTimelineEntries();
+    });
+
+    // Light, critical stuff runs immediately
     progressBar();
     timelinePresent();
-    blobBackground();
-    setupFlipCards();
-    setupTimelineEntries();
     darkMode();
     getWeather();
     setupCookies();
     updateCountdowns();
     setInterval(updateCountdowns, 1000);
-
-    // Carousels
     setupCarousel('carousel', 'left-arrow', 'right-arrow', 260);
     setupCarousel('sports-carousel', 'left-sports', 'right-sports', 220);
 
@@ -337,19 +339,21 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => loadLanguage(btn.dataset.lang))
     );
 
-    // Service Worker registration
-    if ('serviceWorker' in navigator) {
-        let swUrl = '/service-worker.js';
+    requestIdleCallback(() => {
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            let swUrl = '/service-worker.js';
 
-        // If Trusted Types is enabled, create a policy for script URLs
-        if (window.trustedTypes) {
-            const policy = trustedTypes.createPolicy('default', {
-                createScriptURL: (url) => url
-            });
-            swUrl = policy.createScriptURL(swUrl);
+            // If Trusted Types is enabled, create a policy for script URLs
+            if (window.trustedTypes) {
+                const policy = trustedTypes.createPolicy('default', {
+                    createScriptURL: (url) => url
+                });
+                swUrl = policy.createScriptURL(swUrl);
+            }
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker registered with scope:', reg.scope))
+                .catch(err => console.error('Service Worker registration failed:', err));
         }
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(reg => console.log('Service Worker registered with scope:', reg.scope))
-            .catch(err => console.error('Service Worker registration failed:', err));
-    }
+    });
 });
