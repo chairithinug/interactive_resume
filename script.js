@@ -9,7 +9,7 @@ function blobBackground() {
     container.className = "blobs-container fixed inset-0 -z-10 pointer-events-none";
     document.body.appendChild(container);
 
-    const blobs = [];
+    let blobs = [];
     const maxBlobs = 10;
     const minSize = 60;
     const maxSize = 150;
