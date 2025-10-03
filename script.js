@@ -84,7 +84,7 @@ function blobBackground() {
                 b._isFadingOut = true; // mark as already fading
                 b.style.transition = "opacity 2s";
                 b.style.opacity = 0;
-            
+
                 setTimeout(() => {
                     b.remove?.(); // modern safe way, won’t throw if already removed
                     blobs = blobs.filter(blob => blob !== b);
@@ -287,6 +287,114 @@ function loadLanguage(lang) {
     console.log(`Language changed to: ${lang}`);
 }
 
+function photoCarousel() {
+    const photoCarousel = document.getElementById('photo-carousel');
+    const leftPhoto = document.getElementById('left-photo');
+    const rightPhoto = document.getElementById('right-photo');
+
+    leftPhoto.addEventListener('click', () =>
+        photoCarousel.scrollBy({ left: -300, behavior: 'smooth' }));
+    rightPhoto.addEventListener('click', () =>
+        photoCarousel.scrollBy({ left: 300, behavior: 'smooth' }));
+
+    let isDown = false;
+    let startX, scrollLeft;
+    photoCarousel.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - photoCarousel.offsetLeft;
+        scrollLeft = photoCarousel.scrollLeft;
+    });
+    photoCarousel.addEventListener('mouseleave', () => isDown = false);
+    photoCarousel.addEventListener('mouseup', () => isDown = false);
+    photoCarousel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - photoCarousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        photoCarousel.scrollLeft = scrollLeft - walk;
+    });
+}
+
+function photoLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    // Find all gallery images
+    document.querySelectorAll('#photo-carousel img').forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;     // show the clicked image
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex'); // flex for centering
+        });
+    });
+
+    // Close lightbox
+    lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('flex');
+        lightbox.classList.add('hidden');
+    });
+
+    // Close when clicking outside the image
+    lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('flex');
+            lightbox.classList.add('hidden');
+        }
+    });
+}
+
+function initPhotoMap() {
+    // Create the map
+    const map = L.map('map').setView([20, 0], 2); // Center on world
+
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example markers with photos
+    const places = [
+        {
+            coords: [13.7563, 100.5018], // Bangkok
+            title: "Bangkok, Thailand",
+            img: "images/bangkok.jpg"
+        },
+        {
+            coords: [55.6761, 12.5683], // Copenhagen
+            title: "Copenhagen, Denmark",
+            img: "images/copenhagen.jpg"
+        },
+        {
+            coords: [40.7128, -74.0060], // New York
+            title: "New York, USA",
+            img: "images/nyc.jpg"
+        }
+    ];
+
+    // Add markers
+    places.forEach(p => {
+        const marker = L.marker(p.coords).addTo(map);
+        marker.bindPopup(`
+      <h3 class="font-bold">${p.title}</h3>
+      <img src="${p.img}" alt="${p.title}" style="width:200px; margin-top:5px; border-radius:8px;">
+    `);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initPhotoMap();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    photoCarousel();   // your scrollable album
+    photoLightbox();   // new enlarge feature
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    photoCarousel();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     progressBar();
     timelinePresent();
@@ -357,6 +465,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.getElementById("thailand").addEventListener("click", () => {
+    showPhotos(["images/bangkok.jpg", "images/chiangmai.jpg"]);
+});
+
+document.getElementById("denmark").addEventListener("click", () => {
+    showPhotos(["images/copenhagen.jpg"]);
+});
+
 document.getElementById("accept-cookies").addEventListener("click", () => {
     // Hide banner
     document.getElementById("cookie-banner").style.display = "none";
@@ -423,9 +539,47 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
 const entries = document.querySelectorAll('.timeline-entry');
 entries.forEach((entry, i) => {
-  if (i % 2 === 0) {
-    entry.classList.add('left');
-  } else {
-    entry.classList.add('right');
-  }
+    if (i % 2 === 0) {
+        entry.classList.add('left');
+    } else {
+        entry.classList.add('right');
+    }
 });
+
+
+
+
+const mapPhotos = {
+  "TH": ["images/bangkok.jpg", "images/chiangmai.jpg"],
+  "DK": ["images/copenhagen.jpg"],
+  "US": ["images/newyork.jpg", "images/sf.jpg"]
+};
+
+function setupSvgMap() {
+  const svg = document.getElementById("world-map");
+  if (!svg) return;
+
+  svg.querySelectorAll("path").forEach(path => {
+    const iso = path.id.toUpperCase();
+    path.addEventListener("click", () => {
+      const photos = mapPhotos[iso];
+      if (photos && photos.length) {
+        openGalleryFor(photos);
+      } else {
+        alert(`No photos for ${iso}`);
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupSvgMap);
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then((registration) => {
+      console.log('Service Worker registered with scope:', registration.scope);
+    })
+    .catch((error) => {
+      console.error('Service Worker registration failed:', error);
+    });
+}
