@@ -17,7 +17,7 @@ function blobBackground() {
     function random(min, max) { return Math.random() * (max - min) + min; }
 
     function createBlob() {
-        const blob = document.createElement("div");
+        let blob = document.createElement("div");
         blob.className = "blob absolute rounded-full opacity-0";
         const size = random(minSize, maxSize);
         blob.style.width = `${size}px`;
@@ -301,29 +301,29 @@ document.addEventListener("DOMContentLoaded", () => {
             loadLanguage(btn.dataset.lang);
         });
     });
-    document.querySelectorAll(".timeline-entry").forEach(entry => {
-        const popup = entry.querySelector(".timeline-popup");
+    // document.querySelectorAll(".timeline-entry").forEach(entry => {
+    //     const popup = entry.querySelector(".timeline-popup");
 
-        // Hover effect: give user a clue that it's clickable
-        entry.addEventListener("mouseenter", () => {
-            entry.classList.add("scale-110");
-        });
-        entry.addEventListener("mouseleave", () => {
-            entry.classList.remove("scale-110");
-        });
+    //     // Hover effect: give user a clue that it's clickable
+    //     entry.addEventListener("mouseenter", () => {
+    //         entry.classList.add("scale-110");
+    //     });
+    //     entry.addEventListener("mouseleave", () => {
+    //         entry.classList.remove("scale-110");
+    //     });
 
-        // Click toggle popup
-        entry.addEventListener("click", () => {
-            const isVisible = popup.classList.contains("opacity-100");
-            if (isVisible) {
-                popup.classList.remove("opacity-100");
-                popup.classList.add("opacity-0", "pointer-events-none");
-            } else {
-                popup.classList.remove("opacity-0", "pointer-events-none");
-                popup.classList.add("opacity-100");
-            }
-        });
-    });
+    //     // Click toggle popup
+    //     entry.addEventListener("click", () => {
+    //         const isVisible = popup.classList.contains("opacity-100");
+    //         if (isVisible) {
+    //             popup.classList.remove("opacity-100");
+    //             popup.classList.add("opacity-0", "pointer-events-none");
+    //         } else {
+    //             popup.classList.remove("opacity-0", "pointer-events-none");
+    //             popup.classList.add("opacity-100");
+    //         }
+    //     });
+    // });
 });
 setInterval(updateCountdowns, 1000);
 updateCountdowns(); // run immediately on load
