@@ -1,5 +1,22 @@
+# Block everything for all bots by default
 User-agent: *
 Disallow: /
 
+# Allow Google
 User-agent: Googlebot
 Allow: /
+
+# Allow Bing
+User-agent: Bingbot
+Allow: /
+
+# Allow Yahoo
+User-agent: Slurp
+Allow: /
+
+# Allow DuckDuckGo / Yahoo feed
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap location (helps Google find your pages)
+Sitemap: https://chairithinug.github.io/sitemap.xml
