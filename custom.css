@@ -108,6 +108,35 @@ header#main-header {
     animation: none;
 }
 
+.flip-card:focus {
+    outline: 3px solid #007BFF; /* or any visible color */
+    outline-offset: 4px;
+}
+
+.flip-card.flipped:focus {
+    outline: 3px solid #FFAA00;
+}
+
+.flip-card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* center vertically */
+    padding: 1.5rem;
+    overflow: hidden;       /* prevent content spilling out */
+    max-height: 100%;       /* ensure it stays inside card */
+}
+
+.flip-card-back ul {
+    overflow-wrap: break-word;
+    text-align: left;       /* lists look better left-aligned */
+    font-size: clamp(12px, 1.5vw, 14px); /* responsive font */
+    line-height: 1.4;
+    margin: 0;
+    padding-left: 1rem;    /* adjust for list-disc */
+    list-style-position: inside;
+    max-height: 100%;
+}
+
 .flip-card-inner {
     position: relative;
     width: 100%;
