@@ -38,6 +38,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
 
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://www.googletagmanager.com;
@@ -48,6 +49,8 @@
         object-src 'none';
         base-uri 'self';
         frame-src 'none';
+        frame-ancestors 'none';
+        require-trusted-types-for 'script';
     ">
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
