@@ -287,6 +287,193 @@ function loadLanguage(lang) {
     console.log(`Language changed to: ${lang}`);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    progressBar();
+    timelinePresent();
+    certCarousel();
+    sportsCarousel();
+    darkMode();
+    getWeather();
+    blobBackground();
+    // Example: change language on click
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            loadLanguage(btn.dataset.lang);
+        });
+    });
+    document.querySelectorAll(".timeline-entry").forEach(entry => {
+        const popup = entry.querySelector(".timeline-popup");
+
+        // Hover effect: give user a clue that it's clickable
+        entry.addEventListener("mouseenter", () => {
+            entry.classList.add("scale-110");
+        });
+        entry.addEventListener("mouseleave", () => {
+            entry.classList.remove("scale-110");
+        });
+
+        // Click toggle popup
+        entry.addEventListener("click", () => {
+            const isVisible = popup.classList.contains("opacity-100");
+            if (isVisible) {
+                popup.classList.remove("opacity-100");
+                popup.classList.add("opacity-0", "pointer-events-none");
+            } else {
+                popup.classList.remove("opacity-0", "pointer-events-none");
+                popup.classList.add("opacity-100");
+            }
+        });
+    });
+});
+setInterval(updateCountdowns, 1000);
+updateCountdowns(); // run immediately on load
+
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("cookie-overlay");
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const rejectBtn = document.getElementById("reject-cookies");
+
+    function hideBanner() {
+        overlay.style.display = "none";
+        banner.style.display = "none";
+    }
+
+    // Check if user has already made a choice
+    const cookieConsent = localStorage.getItem("cookieConsent");
+    if (cookieConsent === "accepted" || cookieConsent === "rejected") {
+        hideBanner();
+    }
+
+    acceptBtn.addEventListener("click", () => {
+        localStorage.setItem("cookieConsent", "accepted");
+        hideBanner();
+        // Load Google Analytics or other tracking scripts here
+    });
+
+    rejectBtn.addEventListener("click", () => {
+        localStorage.setItem("cookieConsent", "rejected");
+        hideBanner();
+    });
+});
+
+document.getElementById("accept-cookies").addEventListener("click", () => {
+    // Hide banner
+    document.getElementById("cookie-banner").style.display = "none";
+
+    // Save consent in localStorage
+    localStorage.setItem("analytics-consent", "true");
+
+
+    // Load GA script dynamically
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-FJQNSE4GQC";
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-FJQNSE4GQC', { 'anonymize_ip': true });
+    gtag('event', 'click', {
+        'event_category': 'Button',
+        'event_label': 'Download Resume'
+    });
+    // alert('You have accepted analytics cookies. Your interactions will be tracked.');
+});
+
+// Optional: handle reject button
+document.getElementById("reject-cookies").addEventListener("click", () => {
+    document.getElementById("cookie-banner").style.display = "none";
+    localStorage.setItem("analytics-consent", "false");
+    // alert('You have rejected analytics cookies. No data will be collected.');
+});
+
+// let lastScrollTop = 0;
+// let headerHidden = false;
+// const header = document.getElementById('main-header');
+// const delta = 5;
+// const scrollUpTolerance = 50;
+
+// window.addEventListener('scroll', () => {
+//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+//     if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
+
+//     if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+//         // Scroll down → hide
+//         header.style.top = `-${header.offsetHeight}px`;
+//         headerHidden = true;
+//     } else if (headerHidden && scrollTop < lastScrollTop - scrollUpTolerance) {
+//         // Scroll up → show
+//         header.style.top = '0';
+//         headerHidden = false;
+//     }
+
+//     lastScrollTop = scrollTop;
+// });
+
+document.querySelectorAll('.flip-card').forEach(card => {
+    const duration = 5 + Math.random() * 4; // 5s - 9s
+    const initialZ = (Math.random() - 0.5) * 4; // -2deg to 2deg
+    card.style.transform = `rotateZ(${initialZ}deg)`;
+    card.style.animationDuration = `${duration}s`;
+});
+
+
+const entries = document.querySelectorAll('.timeline-entry');
+entries.forEach((entry, i) => {
+    if (i % 2 === 0) {
+        entry.classList.add('left');
+    } else {
+        entry.classList.add('right');
+    }
+});
+
+
+// document.getElementById("thailand").addEventListener("click", () => {
+//     showPhotos(["images/bangkok.jpg", "images/chiangmai.jpg"]);
+// });
+
+// document.getElementById("denmark").addEventListener("click", () => {
+//     showPhotos(["images/copenhagen.jpg"]);
+// });
+
+// const mapPhotos = {
+//   "TH": ["images/bangkok.jpg", "images/chiangmai.jpg"],
+//   "DK": ["images/copenhagen.jpg"],
+//   "US": ["images/newyork.jpg", "images/sf.jpg"]
+// };
+
+// function setupSvgMap() {
+//   const svg = document.getElementById("world-map");
+//   if (!svg) return;
+
+//   svg.querySelectorAll("path").forEach(path => {
+//     const iso = path.id.toUpperCase();
+//     path.addEventListener("click", () => {
+//       const photos = mapPhotos[iso];
+//       if (photos && photos.length) {
+//         openGalleryFor(photos);
+//       } else {
+//         alert(`No photos for ${iso}`);
+//       }
+//     });
+//   });
+// }
+
+// document.addEventListener("DOMContentLoaded", setupSvgMap);
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+        });
+}
+
 function photoCarousel() {
     const photoCarousel = document.getElementById('photo-carousel');
     const leftPhoto = document.getElementById('left-photo');
@@ -382,204 +569,15 @@ function initPhotoMap() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    initPhotoMap();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    photoCarousel();   // your scrollable album
-    photoLightbox();   // new enlarge feature
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    photoCarousel();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    progressBar();
-    timelinePresent();
-    certCarousel();
-    sportsCarousel();
-    darkMode();
-    getWeather();
-    blobBackground();
-    // Example: change language on click
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            loadLanguage(btn.dataset.lang);
-        });
-    });
-    document.querySelectorAll(".timeline-entry").forEach(entry => {
-        const popup = entry.querySelector(".timeline-popup");
-
-        // Hover effect: give user a clue that it's clickable
-        entry.addEventListener("mouseenter", () => {
-            entry.classList.add("scale-110");
-        });
-        entry.addEventListener("mouseleave", () => {
-            entry.classList.remove("scale-110");
-        });
-
-        // Click toggle popup
-        entry.addEventListener("click", () => {
-            const isVisible = popup.classList.contains("opacity-100");
-            if (isVisible) {
-                popup.classList.remove("opacity-100");
-                popup.classList.add("opacity-0", "pointer-events-none");
-            } else {
-                popup.classList.remove("opacity-0", "pointer-events-none");
-                popup.classList.add("opacity-100");
-            }
-        });
-    });
-});
-setInterval(updateCountdowns, 1000);
-updateCountdowns(); // run immediately on load
-
-document.addEventListener("DOMContentLoaded", () => {
-    const overlay = document.getElementById("cookie-overlay");
-    const banner = document.getElementById("cookie-banner");
-    const acceptBtn = document.getElementById("accept-cookies");
-    const rejectBtn = document.getElementById("reject-cookies");
-
-    function hideBanner() {
-        overlay.style.display = "none";
-        banner.style.display = "none";
-    }
-
-    // Check if user has already made a choice
-    const cookieConsent = localStorage.getItem("cookieConsent");
-    if (cookieConsent === "accepted" || cookieConsent === "rejected") {
-        hideBanner();
-    }
-
-    acceptBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "accepted");
-        hideBanner();
-        // Load Google Analytics or other tracking scripts here
-    });
-
-    rejectBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "rejected");
-        hideBanner();
-    });
-});
-
-document.getElementById("thailand").addEventListener("click", () => {
-    showPhotos(["images/bangkok.jpg", "images/chiangmai.jpg"]);
-});
-
-document.getElementById("denmark").addEventListener("click", () => {
-    showPhotos(["images/copenhagen.jpg"]);
-});
-
-document.getElementById("accept-cookies").addEventListener("click", () => {
-    // Hide banner
-    document.getElementById("cookie-banner").style.display = "none";
-
-    // Save consent in localStorage
-    localStorage.setItem("analytics-consent", "true");
-
-
-    // Load GA script dynamically
-    const script = document.createElement("script");
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-FJQNSE4GQC";
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-FJQNSE4GQC', { 'anonymize_ip': true });
-    gtag('event', 'click', {
-        'event_category': 'Button',
-        'event_label': 'Download Resume'
-    });
-    // alert('You have accepted analytics cookies. Your interactions will be tracked.');
-});
-
-// Optional: handle reject button
-document.getElementById("reject-cookies").addEventListener("click", () => {
-    document.getElementById("cookie-banner").style.display = "none";
-    localStorage.setItem("analytics-consent", "false");
-    // alert('You have rejected analytics cookies. No data will be collected.');
-});
-
-// let lastScrollTop = 0;
-// let headerHidden = false;
-// const header = document.getElementById('main-header');
-// const delta = 5;
-// const scrollUpTolerance = 50;
-
-// window.addEventListener('scroll', () => {
-//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-//     if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
-
-//     if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-//         // Scroll down → hide
-//         header.style.top = `-${header.offsetHeight}px`;
-//         headerHidden = true;
-//     } else if (headerHidden && scrollTop < lastScrollTop - scrollUpTolerance) {
-//         // Scroll up → show
-//         header.style.top = '0';
-//         headerHidden = false;
-//     }
-
-//     lastScrollTop = scrollTop;
+// document.addEventListener("DOMContentLoaded", () => {
+//     initPhotoMap();
 // });
 
-document.querySelectorAll('.flip-card').forEach(card => {
-    const duration = 5 + Math.random() * 4; // 5s - 9s
-    const initialZ = (Math.random() - 0.5) * 4; // -2deg to 2deg
-    card.style.transform = `rotateZ(${initialZ}deg)`;
-    card.style.animationDuration = `${duration}s`;
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     photoCarousel();   // your scrollable album
+//     photoLightbox();   // new enlarge feature
+// });
 
-
-const entries = document.querySelectorAll('.timeline-entry');
-entries.forEach((entry, i) => {
-    if (i % 2 === 0) {
-        entry.classList.add('left');
-    } else {
-        entry.classList.add('right');
-    }
-});
-
-
-
-
-const mapPhotos = {
-  "TH": ["images/bangkok.jpg", "images/chiangmai.jpg"],
-  "DK": ["images/copenhagen.jpg"],
-  "US": ["images/newyork.jpg", "images/sf.jpg"]
-};
-
-function setupSvgMap() {
-  const svg = document.getElementById("world-map");
-  if (!svg) return;
-
-  svg.querySelectorAll("path").forEach(path => {
-    const iso = path.id.toUpperCase();
-    path.addEventListener("click", () => {
-      const photos = mapPhotos[iso];
-      if (photos && photos.length) {
-        openGalleryFor(photos);
-      } else {
-        alert(`No photos for ${iso}`);
-      }
-    });
-  });
-}
-
-document.addEventListener("DOMContentLoaded", setupSvgMap);
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-    .then((registration) => {
-      console.log('Service Worker registered with scope:', registration.scope);
-    })
-    .catch((error) => {
-      console.error('Service Worker registration failed:', error);
-    });
-}
+// document.addEventListener("DOMContentLoaded", () => {
+//     photoCarousel();
+// });
