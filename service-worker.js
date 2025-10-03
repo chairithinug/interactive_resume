@@ -28,29 +28,31 @@ self.addEventListener('install', (event) => {
 
 // Fetch event
 self.addEventListener("fetch", event => {
-  // Only handle GET requests
   if (event.request.method !== "GET") return;
 
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
+    (async () => {
+      const cachedResponse = await caches.match(event.request);
+
       const networkFetch = fetch(event.request)
-        .then(networkResponse => {
-          // Update cache with latest
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-          });
-          return networkResponse;
+        .then(async networkResponse => {
+          // Clone response for cache
+          const responseClone = networkResponse.clone();
+
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put(event.request, responseClone);
+
+          return networkResponse; // original goes to browser
         })
         .catch(() => {
-          // Network failed, show offline page if it's a navigation request
+          // Optional offline fallback
           // if (event.request.mode === "navigate") {
           //   return caches.match(OFFLINE_URL);
           // }
         });
 
-      // If cached, return it immediately (stale-while-revalidate pattern)
       return cachedResponse || networkFetch;
-    })
+    })()
   );
 });
 
