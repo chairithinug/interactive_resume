@@ -40,6 +40,7 @@ header#main-header {
     border-radius: 50%;
     opacity: 0.8;
     overflow: hidden;
+    pointer-events: auto;
 }
 
 .blobs-container {
@@ -50,8 +51,8 @@ header#main-header {
     overflow: hidden;
     top: 0;
     left: 0;
-    pointer-events: none;
-    z-index: -1;
+    /* pointer-events: none; */
+    z-index: 0;
     /* behind everything */
 }
 

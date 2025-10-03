@@ -11,7 +11,7 @@ function blobBackground() {
     ];
 
     const container = document.createElement("div");
-    container.className = "blobs-container fixed inset-0 -z-10 pointer-events-none";
+    container.className = "blobs-container fixed inset-0 z-0";
     document.body.appendChild(container);
 
     let blobsList = [];
@@ -19,7 +19,7 @@ function blobBackground() {
 
     const createBlob = () => {
         const blob = document.createElement("div");
-        blob.className = "blob absolute rounded-full opacity-0";
+        blob.className = "blob absolute rounded-full opacity-0 cursor-pointer"; // cursor pointer for feedback
         const size = random(minSize, maxSize);
         blob.style.width = blob.style.height = `${size}px`;
         blob.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
@@ -34,44 +34,64 @@ function blobBackground() {
         container.appendChild(blob);
         blobsList.push(blob);
 
+        // Fade in
         requestAnimationFrame(() => {
             blob.style.transition = "opacity 1.5s";
             blob.style.opacity = "0.15";
+        });
+
+        // Add click to pop
+        blob.addEventListener("click", () => {
+            // explodeText();
+            blob._popping = true;
+            blob._scale = 2;
+            blob.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+            blob.style.transform = `scale(2)`; // optional pop scale
+            blob.style.opacity = 0;
+
+            setTimeout(() => {
+                blob.remove();
+                blobsList = blobsList.filter(b => b !== blob);
+            }, 300);
         });
     };
 
     const animate = () => {
         blobsList.forEach((b, i) => {
-            b.x += b.vx;
-            b.y += b.vy;
+            if (!b._popping) {
+                b.x += b.vx;
+                b.y += b.vy;
 
-            // Bounce off walls
-            if (b.x < 0 || b.x + b.offsetWidth > window.innerWidth) b.vx *= -1;
-            if (b.y < 0 || b.y + b.offsetHeight > window.innerHeight) b.vy *= -1;
+                // Bounce off walls
+                if (b.x < 0 || b.x + b.offsetWidth > window.innerWidth) b.vx *= -1;
+                if (b.y < 0 || b.y + b.offsetHeight > window.innerHeight) b.vy *= -1;
 
-            // Bounce off other blobs
-            for (let j = i + 1; j < blobsList.length; j++) {
-                const o = blobsList[j];
-                const dx = (b.x + b.offsetWidth / 2) - (o.x + o.offsetWidth / 2);
-                const dy = (b.y + b.offsetHeight / 2) - (o.y + o.offsetHeight / 2);
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const minDist = (b.offsetWidth + o.offsetWidth) / 2;
+                // Bounce off other blobs
+                for (let j = i + 1; j < blobsList.length; j++) {
+                    const o = blobsList[j];
+                    const dx = (b.x + b.offsetWidth / 2) - (o.x + o.offsetWidth / 2);
+                    const dy = (b.y + b.offsetHeight / 2) - (o.y + o.offsetHeight / 2);
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const minDist = (b.offsetWidth + o.offsetWidth) / 2;
 
-                if (dist < minDist && dist > 0) {
-                    const angle = Math.atan2(dy, dx);
-                    const overlap = minDist - dist;
+                    if (dist < minDist && dist > 0) {
+                        const angle = Math.atan2(dy, dx);
+                        const overlap = minDist - dist;
 
-                    b.x += Math.cos(angle) * (overlap / 2);
-                    b.y += Math.sin(angle) * (overlap / 2);
-                    o.x -= Math.cos(angle) * (overlap / 2);
-                    o.y -= Math.sin(angle) * (overlap / 2);
+                        b.x += Math.cos(angle) * (overlap / 2);
+                        b.y += Math.sin(angle) * (overlap / 2);
+                        o.x -= Math.cos(angle) * (overlap / 2);
+                        o.y -= Math.sin(angle) * (overlap / 2);
 
-                    [b.vx, o.vx] = [o.vx, b.vx];
-                    [b.vy, o.vy] = [o.vy, b.vy];
+                        [b.vx, o.vx] = [o.vx, b.vx];
+                        [b.vy, o.vy] = [o.vy, b.vy];
+                    }
                 }
             }
+            
 
-            b.style.transform = `translate(${b.x}px, ${b.y}px)`;
+            // b.style.transform = `translate(${b.x}px, ${b.y}px)`;
+            b.style.transform = `translate(${b.x}px, ${b.y}px) scale(${b._scale || 1})`;
             b.age += 0.016;
 
             if (b.age > b.lifespan && !b._isFadingOut) {
@@ -365,20 +385,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ric(() => {
         // Service Worker registration
-        if ('serviceWorker' in navigator) {
-            let swUrl = '/service-worker.js';
+        // if ('serviceWorker' in navigator) {
+        //     let swUrl = '/service-worker.js';
 
-            // If Trusted Types is enabled, create a policy for script URLs
-            if (window.trustedTypes) {
-                const policy = trustedTypes.createPolicy('default', {
-                    createScriptURL: (url) => url
-                });
-                swUrl = policy.createScriptURL(swUrl);
-            }
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => console.log('Service Worker registered with scope:', reg.scope))
-                .catch(err => console.error('Service Worker registration failed:', err));
-        }
+        //     // If Trusted Types is enabled, create a policy for script URLs
+        //     if (window.trustedTypes) {
+        //         const policy = trustedTypes.createPolicy('default', {
+        //             createScriptURL: (url) => url
+        //         });
+        //         swUrl = policy.createScriptURL(swUrl);
+        //     }
+        //     navigator.serviceWorker.register('/service-worker.js')
+        //         .then(reg => console.log('Service Worker registered with scope:', reg.scope))
+        //         .catch(err => console.error('Service Worker registration failed:', err));
+        // }
     });
 
 });
@@ -389,3 +409,40 @@ document.addEventListener("DOMContentLoaded", () => {
 //     toggleBtn.addEventListener('click', () => {
 //         sidebar.classList.toggle('-translate-x-full');
 //     });
+
+function explodeText() {
+    const elements = document.querySelectorAll("h1, h2, h3, p, span, li");
+
+    elements.forEach(el => {
+        if (el._exploded) return; // avoid double explosions
+        el._exploded = true;
+
+        const text = el.textContent;
+        el.textContent = "";
+
+        [...text].forEach(char => {
+            const span = document.createElement("span");
+            span.textContent = char;
+            span.style.display = "inline-block";
+            span.style.transition = "transform 1s ease, opacity 1s ease";
+            span.style.transform = "translate(0, 0) rotate(0deg)";
+            el.appendChild(span);
+
+            // random trajectory
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 50 + Math.random() * 200;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+            const rot = Math.random() * 720 - 360;
+
+            // 🔑 Force reflow before animation
+            void span.offsetWidth;
+
+            // trigger explosion on next frame
+            requestAnimationFrame(() => {
+                span.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+                span.style.opacity = 0;
+            });
+        });
+    });
+}
