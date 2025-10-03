@@ -74,7 +74,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Anapat Chairithinugull – Portfolio">
     <meta name="twitter:description" content="Interactive resume and projects of Anapat Chairithinugull">
-
 </head>
 
 <body
@@ -146,6 +145,44 @@
                 </div>
             </div>
         </div>
+        <!-- Sidebar -->
+        <!-- <nav aria-label="Sidebar navigation"
+                class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 shadow-md z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300"
+                id="sidebar"> -->
+
+        <!-- Logo / Site Title -->
+        <!-- <div class="flex items-center justify-center h-20 border-b border-gray-200 dark:border-gray-700">
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">ChairithinuG</span>
+                </div> -->
+
+        <!-- Menu Items -->
+        <!-- <ul class="flex flex-col mt-4 gap-2 px-4">
+                    <li><a href="#profile"
+                            class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Profile</a></li>
+                    <li><a href="#skills" class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+                    </li>
+                    <li><a href="#timeline"
+                            class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Timeline</a></li>
+                    <li><a href="#work" class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Work</a></li>
+                    <li><a href="#education"
+                            class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Education</a></li>
+                    <li><a href="#further" class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Continual
+                            Education</a></li>
+                    <li><a href="#languages"
+                            class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Languages</a></li>
+                    <li><a href="#interests"
+                            class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Interests</a></li>
+                    <li><a href="#sports" class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Sports</a>
+                    </li>
+                    <li><a href="#qa" class="px-2 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">FAQ</a></li>
+                </ul> -->
+        <!-- </nav> -->
+
+        <!-- Hamburger for Mobile -->
+        <!-- <button id="sidebar-toggle"
+                class="md:hidden fixed top-4 left-4 z-50 p-2 bg-white dark:bg-gray-900 rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-500">
+                ☰
+            </button> -->
     </header>
     <!-- Progress Bar Container -->
     <div id="progress-bar"></div>
@@ -155,7 +192,7 @@
         <!-- Page content -->
         <div class="relative z-10 space-y-10">
             <!-- Profile -->
-            <section id="profile">
+            <section id="profile" aria-labelledby="profile-title">
                 <h2 id="profile-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Profile Summary
                 </h2>
                 <p id="profile-summary" class="mt-2 text-gray-700 dark:text-gray-300">MSc Computer Science graduate from
@@ -172,7 +209,7 @@
             </section>
 
             <!-- Skills -->
-            <section id="skills">
+            <section id="skills" aria-labelledby="skills-title">
                 <h2 id="skills-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Technical Skills
                 </h2>
 
@@ -293,10 +330,8 @@
                     alt="GitHub Stats" /> -->
             </section>
 
-
-
             <!-- Timeline -->
-            <section id="timeline">
+            <section id="timeline" aria-labelledby="timeline-title">
                 <h2 id="timeline-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Timeline</h2>
 
                 <!-- Legend -->
@@ -566,7 +601,7 @@
             </section>
 
             <!-- Work Experience -->
-            <section id="work">
+            <section id="work" aria-labelledby="work-title">
                 <h2 id="work-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">Work Experience</h2>
                 <div class="mt-4 grid gap-6 md:grid-cols-2">
 
@@ -721,7 +756,7 @@
             </section>
 
             <!-- Education -->
-            <section id="education" class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+            <section id="education" class="max-w-4xl mx-auto px-4 sm:px-6 py-8" aria-labelledby="education-title">
                 <h2 id="education-title"
                     class="text-2xl font-semibold border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-6">
                     Education
@@ -815,7 +850,7 @@
             </section>
 
             <!-- Certifications Carousel -->
-            <section id="further" class="relative max-w-4xl mx-auto px-4 sm:px-6 py-8">
+            <section id="further" class="relative max-w-4xl mx-auto px-4 sm:px-6 py-8" aria-labelledby="further-title">
                 <h2 id="further-title"
                     class="text-2xl font-semibold border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-6">
                     Continual Education
@@ -934,7 +969,7 @@
             </section> -->
 
             <!-- Languages -->
-            <section id="languages" class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+            <section id="languages" class="max-w-4xl mx-auto px-4 sm:px-6 py-8" aria-labelledby="languages-title">
                 <h2 id="languages-title"
                     class="text-2xl font-semibold border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-6">
                     Language Skills
@@ -976,7 +1011,7 @@
             </section>
 
             <!-- Interests -->
-            <section id="interests" class="relative">
+            <section id="interests" class="relative" aria-labelledby="interests-title">
                 <h2 id="interests-title"
                     class="text-xl font-semibold border-b-2 border-gray-200 dark:border-gray-700 pb-1 text-gray-900 dark:text-gray-100">
                     Interests
@@ -1003,7 +1038,7 @@
                 </div>
             </section>
 
-            <section id="sports" class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+            <section id="sports" class="max-w-5xl mx-auto px-4 sm:px-6 py-8" aria-labelledby="sports-title">
                 <h2 id="sports-title"
                     class="text-2xl font-semibold border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-6">
                     Sports Achievements
@@ -1134,7 +1169,7 @@
                 </div>
             </section>
 
-            <section id="qa">
+            <section id="qa" class="max-w-4xl mx-auto px-4 sm:px-6 py-8" aria-labelledby="qa-title">
                 <h2 id="qa-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">
                     FAQ
                 </h2>

@@ -417,3 +417,13 @@ header#main-header {
 #world-map path:hover {
   fill: #f59e0b; /* amber highlight on hover */
 }
+
+#nav-menu {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+  max-height: 0;
+}
+
+#nav-menu.show {
+  max-height: 500px; /* large enough to fit all items */
+}
