@@ -38,6 +38,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167x167.png">
+
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.tailwindcss.com https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+  img-src 'self' https://cdn-icons-png.flaticon.com https://upload.wikimedia.org https://cdn.jsdelivr.net data:;
+  connect-src 'self' https://api.open-meteo.com;
+  font-src 'self' https://cdn.jsdelivr.net;
+  frame-src 'none';
+  frame-ancestors 'none';
+">
+
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
             {
@@ -45,15 +57,26 @@
               "@type": "Person",
               "name": "Anapat Chairithinugull",
               "jobTitle": "Data Scientist & Software Engineer",
+              "image": "",
               "url": "https://chairithinug.github.io/",
               "sameAs": [
                 "https://www.linkedin.com/in/anapat-chairithinugull",
                 "https://github.com/chairithinug",
                 "https://www.strava.com/athletes/137178417"
               ],
-              "alumniOf": "University of Copenhagen"
+              "alumniOf": "University of Copenhagen",
+              "skills": [
+                    "JavaScript",
+                    "Python",
+                    "React",
+                    "Node.js",
+                    "HTML",
+                    "CSS",
+                    "SQL"
+                ],
+              "description": "TODO"
             }
-            </script>
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -85,8 +108,10 @@
                         class="text-blue-600 hover:underline">LinkedIn</a></p>
                 <p>🔗 <a href="https://www.strava.com/athletes/137178417" target="_blank"
                         class="text-orange-600 hover:underline">Strava</a></p>
-                <p>📄 <a href="Anapat_Chairithinugull_Resume_polished.pdf" target="_blank" class="text-green-600 hover:underline">Resume</a></p>
-                <p>🤖 <a href="ATS_friendly_Anapat_Chairithinugull.pdf" target="_blank" class="text-purple-600 hover:underline">ATS Friendly Resume</a></p>
+                <p>📄 <a href="Anapat_Chairithinugull_Resume_polished.pdf" target="_blank"
+                        class="text-green-600 hover:underline">Resume</a></p>
+                <p>🤖 <a href="ATS_friendly_Anapat_Chairithinugull.pdf" target="_blank"
+                        class="text-purple-600 hover:underline">ATS Friendly Resume</a></p>
             </div>
             <!-- Weather & Controls -->
             <div class="flex flex-col items-center space-y-2">
@@ -1142,55 +1167,61 @@
                 <h2 id="qa-title" class="text-xl font-semibold border-b-2 border-gray-200 pb-1">
                     FAQ
                 </h2>
-            
+
                 <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Flip Card 1 -->
                     <div class="flip-card cursor-pointer" onclick="toggleFlip(this)">
                         <div class="flip-card-inner">
                             <!-- Front -->
-                            <div class="flip-card-front bg-white dark:bg-gray-800 shadow rounded-xl p-4 transition-colors duration-300">
+                            <div
+                                class="flip-card-front bg-white dark:bg-gray-800 shadow rounded-xl p-4 transition-colors duration-300">
                                 <h3 class="font-semibold text-gray-900 dark:text-gray-100">
                                     Why USA?
                                 </h3>
                                 <p class="text-sm text-gray-600 dark:text-gray-300">
-                                    
+
                                 </p>
                             </div>
                             <!-- Back -->
-                            <div class="flip-card-back bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 transition-colors duration-300">
+                            <div
+                                class="flip-card-back bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 transition-colors duration-300">
                                 <p class="text-gray-700 dark:text-gray-200">
-                                    Thanks to my family who were willing to send me to the US. So I fulfilled my family's dream!
+                                    Thanks to my family who were willing to send me to the US. So I fulfilled my
+                                    family's dream!
                                 </p>
                             </div>
                         </div>
                     </div>
-            
+
                     <!-- Flip Card 2 -->
                     <div class="flip-card cursor-pointer" onclick="toggleFlip(this)">
                         <div class="flip-card-inner">
                             <!-- Front -->
-                            <div class="flip-card-front bg-white dark:bg-gray-800 shadow rounded-xl p-4 transition-colors duration-300">
+                            <div
+                                class="flip-card-front bg-white dark:bg-gray-800 shadow rounded-xl p-4 transition-colors duration-300">
                                 <h3 class="font-semibold text-gray-900 dark:text-gray-100">
                                     Why Denmark?
                                 </h3>
                                 <p class="text-sm text-gray-600 dark:text-gray-300">
-                                    
+
                                 </p>
                             </div>
                             <!-- Back -->
-                            <div class="flip-card-back bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 transition-colors duration-300">
+                            <div
+                                class="flip-card-back bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 transition-colors duration-300">
                                 <p class="text-gray-700 dark:text-gray-200">
                                     Got bored in Thailand, so why not Europe? Then, Denmark chose me.
                                 </p>
                             </div>
                         </div>
                     </div>
-            
+
                     <!-- Flip Card 3 -->
                     <div class="flip-card cursor-pointer" onclick="toggleFlip(this)">
                         <div class="flip-card-inner">
                             <!-- Front -->
-                            <div class="flip-card-front bg-white dark:bg-gray-800 shadow rounded-xl p-4 transition-colors duration-300">
+                            <div
+                                class="flip-card-front bg-white dark:bg-gray-800 shadow rounded-xl p-4 transition-colors duration-300">
                                 <h3 class="font-semibold text-gray-900 dark:text-gray-100">
                                     Cool website! How did you make it?
                                 </h3>
@@ -1198,7 +1229,8 @@
                                 </p>
                             </div>
                             <!-- Back -->
-                            <div class="flip-card-back bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 transition-colors duration-300">
+                            <div
+                                class="flip-card-back bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 transition-colors duration-300">
                                 <p class="text-gray-700 dark:text-gray-200">
                                     Know the basic and 2 days with ChatGPT.
                                 </p>
