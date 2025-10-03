@@ -19,13 +19,33 @@ self.addEventListener('install', (event) => {
       return cache.addAll(urlsToCache);
     })
   );
+  self.skipWaiting();
 });
 
 // Fetch event
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", event => {
+  // Only handle GET requests
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+    caches.match(event.request).then(cachedResponse => {
+      const networkFetch = fetch(event.request)
+        .then(networkResponse => {
+          // Update cache with latest
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, networkResponse.clone());
+          });
+          return networkResponse;
+        })
+        .catch(() => {
+          // Network failed, show offline page if it's a navigation request
+          // if (event.request.mode === "navigate") {
+          //   return caches.match(OFFLINE_URL);
+          // }
+        });
+
+      // If cached, return it immediately (stale-while-revalidate pattern)
+      return cachedResponse || networkFetch;
     })
   );
 });
@@ -44,4 +64,5 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+  self.clients.claim();
 });
